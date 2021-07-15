@@ -1,0 +1,138 @@
+.footer {
+    font-size: 12px;
+    font-weight: 400;
+    background-color: #F6F7FF;
+    color: #707C87;
+    padding-top: 40px;
+    padding-bottom: 23px;
+}
+
+.footer__container {
+    margin: 0 auto;
+    max-width: 1366px;
+    padding: 0 5.5%;
+}
+
+.footer__content {
+    display: flex;
+    align-items: start;
+}
+
+.footer__info {
+    width: 22%;
+    margin-right: 5.1%;
+    padding-left: 2%;
+}
+
+.footer__info-text {
+    line-height: 16.8px;
+}
+
+.footer__nav-list {
+    list-style: none;
+    padding-left: 0;
+    margin-right: 6%;
+}
+
+.footer__nav-item {
+    padding-bottom: 9px;
+}
+
+.footer__nav-link {
+    font-size: 16px;
+    color: #1F1E25;
+    text-decoration: none;
+    line-height: 23px;
+    font-weight: 500;
+    line-height: 22.4px;
+
+    &:hover {
+        color: #2C36F2;
+    }
+      &:focus,
+      &:active {
+        color: #2C36F2;
+    }
+}
+
+.footer__sms {
+    margin-top: 11px;
+    width: 14%;
+    margin-right: 3%;
+    padding-left: 3.2%;
+}
+
+.footer__sms-link {
+    display: block;
+    position: relative;
+    font-size: 16px;
+    color: #1F1E25;
+    text-decoration: none;
+
+    &::before {
+        position: absolute;
+        content: '';
+        background: url(../../images/phone.svg);
+        width: 10px;
+        height: 16px;
+        top: 2px;
+        left: -29px;
+
+    }
+
+    &:hover {
+        color: #2C36F2;
+    }
+      &:focus,
+      &:active {
+        color: #2C36F2;
+    }
+}
+
+.footer__sms-info {
+    line-height: 16.8px;
+    margin-top: 4px;
+}
+
+.footer__phone {
+    margin-top: 11px;
+    width: 14%;
+    padding-left: 6%;
+}
+
+.footer__phone-link {
+    display: block;
+    position: relative;
+    font-size: 16px;
+    color: #1F1E25;
+    text-decoration: none;
+
+    &::before {
+        position: absolute;
+        content: '';
+        background: url(../../images/phone-pipe.svg);
+        width: 16px;
+        height: 16px;
+        top: 2px;
+        left: -32px;
+
+    }
+
+    &:hover {
+        color: #2C36F2;
+    }
+      &:focus,
+      &:active {
+        color: #2C36F2;
+    }
+}
+
+.footer__phone-info {
+    line-height: 16.8px;
+    margin-top: 4px;
+}
+
+.fooler__socials {
+    width: 9.5%;
+    padding-left: 2.7%;
+}
