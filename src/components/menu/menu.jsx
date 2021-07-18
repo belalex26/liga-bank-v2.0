@@ -4,6 +4,7 @@ import Logo from '../logo/logo';
 const Menu = () => {
   return (
     <nav className="menu">
+      <button className="menu__icon" aria-label="меню"></button>
         <Logo />
         <ul className="menu__list">
           <li className="menu__item">
