@@ -1,0 +1,81 @@
+.tabs {
+   margin-top: 100px;
+
+}
+
+.tabs__container {
+    margin: 0 auto;
+    max-width: 1170px;
+    padding: 0 10px;
+}
+
+.tabs__triggers {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tabs__content-item {
+    display: none;
+    background-color: transparent;
+}
+
+.tabs__triggers-item{
+    font-size: 18px;
+    font-weight: 500;
+    background-color: #fff;
+    text-decoration: none;
+    color: #4C4B51;
+    width: 25%;
+    min-height: 93px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.tabs__triggers-item--active {
+    background-color: #F6F7FF;
+}
+
+.tabs__content-item--active {
+    display: block;
+    background-color: #F6F7FF;
+}
+
+.tabs__triggers-item--deposits {
+    &::before {
+        content: '';
+        width: 46px;
+        height: 40px;
+        background: url('../../images/vault.svg') no-repeat center;
+    }
+}
+
+.tabs__triggers-item--credit {
+    &::before {
+        content: '';
+        width: 50px;
+        height: 40px;
+        background: url('../../images/cards.svg') no-repeat center;
+    }
+}
+
+.tabs__triggers-item--insurance {
+    &::before {
+        content: '';
+        width: 44px;
+        height: 40px;
+        background: url('../../images/security.svg') no-repeat center;
+    }
+}
+
+.tabs__triggers-item--online {
+    &::before {
+        content: '';
+        width: 36px;
+        height: 40px;
+        background: url('../../images/phone.svg') no-repeat center;
+    }
+}

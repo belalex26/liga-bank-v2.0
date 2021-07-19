@@ -1,0 +1,128 @@
+.online-service {
+    position: relative;
+    background: #F6F7FF;
+    color: #1F1E25;
+    font-size: 18px;
+    padding-left: 6%;
+    padding-top: 56px;
+    border-radius: 0px 4px 4px 4px;
+    padding-bottom: 74px;
+
+    &::after {
+        position: absolute;
+        content: '';
+        width: 440px;
+        height: 290px;
+        background: url('../../images/mobail.png') no-repeat center;
+        left: 120%;
+        top: -3px;
+
+        @media screen and (max-width: 1023px) {
+            left: 57%;
+            top: 135px;
+            width: 286px;
+            height: 260px;
+            background: url('../../images/mobail-tablet.png') no-repeat center;
+            background-size: contain;
+        }
+
+        @media screen and (max-width: 767px) {
+            left: 72.5%;
+            top: 97px;
+            width: 87px;
+            height: 113px;
+            background: url('../../images/mobile-mobile.png') no-repeat center;
+        }
+    }
+
+    @media screen and (max-width: 1023px) {
+        font-size: 16px;
+        padding-left: 6%;
+        padding-top: 54px;
+        padding-bottom: 92px;
+    }
+
+    @media screen and (max-width: 767px) {
+        font-size: 14px;
+        padding-left: 4.5%;
+        padding-bottom: 66px;
+    }
+    
+}
+
+.online-service__title {
+    font-weight: 500;
+    font-size: 22px;
+    width: 40%;
+    margin-top: 0;
+    line-height: 30.8px;
+    margin-bottom: 28px;
+
+    @media screen and (max-width: 1023px) {
+        font-size: 18px;
+        width: 46%;
+        margin-bottom: 25px;
+        line-height: 25.2px;
+    }
+
+    @media screen and (max-width: 767px) {
+        font-size: 16px;
+        width: 72%;
+        margin-bottom: 21px;
+        line-height: 22.4px;
+    }
+
+    
+}
+
+.online-service__list {
+    list-style: url('../../images/check.svg');
+    padding-left: 21px;
+    width: 30%;
+    margin-bottom: 48px;
+
+    @media screen and (max-width: 1023px) {
+        margin-top: 13px;
+        width: 45%;
+    }
+
+    @media screen and (max-width: 767px) {
+        list-style: url('../../images/check-mobile.svg');
+        width: 72%;
+        line-height: 18.2px;
+        padding-left: 15px;
+        margin-bottom: 39px;
+    }
+}
+
+.online-service__item {
+    margin-bottom: 15px;
+    line-height: 23.4px;
+
+    @media screen and (max-width: 1023px) {
+        line-height: 20.8px;
+    }
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 9px;
+        line-height: 19.2px;
+    }
+}
+
+.online-service__item span {
+    display: block;
+}
+
+.online-service__link {
+    text-decoration: none;
+    color: #F6F7FF;
+    background-color: #2C36F2;
+    padding: 16px 32px;
+    border-radius: 4px;
+    font-size: 16px;
+
+    @media screen and (max-width: 767px) {
+        font-size: 14px;
+        padding: 14px 85px;
+    }
+}
