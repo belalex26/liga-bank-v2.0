@@ -1,0 +1,222 @@
+.modal {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(72, 73, 77, 0.2);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: .5s;
+    color: #48494D;
+    font-family: 'Open Sans', 'Arial', sans-serif;
+    visibility: hidden;
+}
+
+.modal.modal--active {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
+}
+
+.modal__callback {
+    background-color: #F6F7FF;
+    border: 4px solid #2C36F2;
+    box-sizing: border-box;
+    width: 544px;
+    min-height: 493px;
+    overflow: hidden;
+    transform: scale(0.5);
+    transition: .4s all;
+    position: relative;
+    display: grid;
+    padding-top: 0px;
+
+    @media screen and (max-width: 1023px) {
+        width: 675px;
+    }
+
+    @media screen and (max-width: 767px) {
+        width: 290px;
+        min-height: 455px;
+    }
+}
+
+.modal__callback.modal__callback--active {
+    transform: scale(1);
+}
+
+.modal__logo {
+    padding-top: 57px;
+    padding-left: 55px;
+
+    @media screen and (max-width: 1023px) {
+        padding-top: 53px;
+        padding-left: 82px;
+    }
+
+    @media screen and (max-width: 767px) {
+        padding-top: 45px;
+        padding-left: 11px;
+    }
+}
+
+.modal__label {
+    position: relative;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.modal__input {
+    width: 424px;
+    height: 60px;
+    border: 1px solid #1F1E25;
+    box-sizing: border-box;
+    border-radius: 4px;
+    margin-bottom: 30px;
+
+    &:hover,
+    &:active {
+        border: 1px solid rgba(72, 73, 77, 0.7);
+    }
+
+    &:focus {
+        border: 1px solid rgba(72, 73, 77, 0.7);
+    }
+
+    @media screen and (max-width: 1023px) {
+        width: 500px;
+    }
+
+    @media screen and (max-width: 767px) {
+        width: 250px;
+        min-height: 60px;
+        margin-bottom: 20px;
+    }
+}
+
+.modal__password-reset {
+    position: absolute;
+    right: 0;
+    top: 91px;
+    text-decoration: none;
+    color: #707C87;
+    font-size: 12px;
+
+    @media screen and (max-width: 767px) {
+        font-size: 14px;
+        right: 69px;
+        top: 179px;
+    }
+}
+
+.modal__callback-form {
+    margin-top: -41px;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 79%;
+    justify-self: center;
+
+    @media screen and (max-width: 1023px) {
+        width: 75%;
+        margin-top: -20px;
+    }
+
+    @media screen and (max-width: 767px) {
+        width: 88%;
+        margin-top: -41px;
+    }
+}
+
+.modal__submit {
+    margin-top: 21px;
+    font-size: 18px;
+    background: #2C36F2;
+    border-radius: 4px;
+    color: #F6F7FF;
+
+    padding: 16.5px 20px;
+
+    border: 1px solid transparent;
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:active {
+        outline: none;
+        background: linear-gradient(90deg, #AE009D 0%, #2C36F2 95.72%);
+    }
+
+    &:disabled {
+        background: #2C36F2;
+        color: #F6F7FF;
+        opacity: 0.3;
+    }
+
+    @media screen and (max-width: 767px) {
+        font-size: 14px;
+        margin-top: 11px;
+    }
+}
+
+.modal__close {
+    position: absolute;
+    top: 38px;
+    right: 39px;
+    background-color: transparent;
+    border: none;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+
+    &::before {
+        position: absolute;
+        content: '';
+        width: 2px;
+        height: 26px;
+        transform: rotate(-45deg);
+        background-color: #1F1E25;
+        top: 15px;
+        left: 24px;
+
+        @media screen and (max-width: 767px) {
+            height: 20px;
+        }
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        width: 2px;
+        height: 26px;
+        transform: rotate(45deg);
+        background-color: #1F1E25;
+        top: 15px;
+        left: 24px;
+
+        @media screen and (max-width: 767px) {
+            height: 20px;
+        }
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        outline: none;
+        background: #9F9E9E;
+    }
+
+    @media screen and (max-width: 1023px) {
+        top: 34px;
+        right: 66px;
+    }
+
+    @media screen and (max-width: 767px) {
+        top: 28px;
+        right: -3px;
+    }
+}
