@@ -8,7 +8,6 @@
     }
 
     @media screen and (max-width: 767px) {
-        min-height: 684px;
         align-items: flex-start;
         flex-direction: column;
     }
@@ -16,8 +15,14 @@
 
 .menu__logo {
 
+    @media screen and (max-width: 1023px) {
+        width: 21%;
+    }
+
     @media screen and (max-width: 767px) {
+        width: 40%;
         padding-left: 37px;
+        margin-top: -3px;
     }
 }
 
@@ -79,15 +84,16 @@
         width: 76%;
         padding-left: 5%;
         padding-top: 3px;
+        margin-top: 11px;
     }
 
     @media screen and (max-width: 767px) {
         flex-direction: column;
         background-color: #F6F7FF;
         padding-left: 3px;
-        width: 100%;
-        padding-top: 25px;
-        //display: none;
+        width: 96%;
+        padding-top: 29px;
+        display: none;
     }
 }
 
@@ -137,6 +143,9 @@
     font-size: 16px;
     text-decoration: none;
     padding-left: 1%;
+    margin-left: 12px;
+    background: #F6F7FF;
+    border: none;
 
     &:hover {
         color: #2C36F2;
@@ -150,18 +159,21 @@
     }
 
     @media screen and (max-width: 1023px) {
-        width: 5%;
+        width: 7%;
     }
 
     @media screen and (max-width: 767px) {
         border-top: 1px solid #C1C2CA;
         border-bottom: 1px solid #C1C2CA;
-        width: 95%;
+        border-left: none;
+        border-right: none;
+        width: 92%;
         justify-content: flex-start;
         margin-left: 10px;
         margin-top: -16px;
         padding-bottom: 10px;
         padding-top: 10px;
+        display: none;
     }
 }
 
@@ -189,6 +201,7 @@
         display: block;
         margin-top: 12px;
         margin-bottom: 12px;
+        font-weight: 500;
     }
 }
 
@@ -198,8 +211,10 @@
     @media screen and (max-width: 767px) {
         display: block;
         position: absolute;
-        top: -2px;
-        right: 1px;
+        top: -4px;
+        right: 7px;
+        border: none;
+        background: #F6F7FF;
     }
 }
 
@@ -207,20 +222,35 @@
     display: none;
 }
 
-.menu--active .menu__button  {
-    left: auto;
-    right: -17px;
-    top: -7px;
+.menu--active .menu__navigation-bar {
+    display: flex;
 }
 
-.menu--active .menu__button-icon {
+.menu--active .menu__list {
+    display: block;
+}
+
+.menu--active .menu__button-icon  {
+    top: 11px;
+    left: 5px;
+}
+
+.menu--active .menu__button {
     transform: rotate(45deg);
 
+    top: -7px;
+    right: 8.5px;
+    margin: 0;
+    padding: 10px;
+
     ::before {
-        transform: rotate(90deg);
+        left: 0px;
+        top: 0px;
     }
     
     ::after {
-        transform: rotate(-45deg);
+        transform: rotate(89deg);
+        top: 0;
+ 
     }
 }

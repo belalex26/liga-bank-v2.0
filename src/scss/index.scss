@@ -1,9 +1,13 @@
 @import './font.scss';
 @import './base.scss';
+
+@import '../components/main/main.scss';
 @import '../components/header/header.scss';
 @import '../components/logo/logo.scss';
 @import '../components/menu/menu.scss';
+
 @import '../components/slider/slider.scss';
+@import '../components/slider/control-dots.scss';
 
 @import '../components/tabs/tabs.scss';
 
@@ -11,6 +15,15 @@
 @import '../components/credit/credit.scss';
 @import '../components/insurance/insurance.scss';
 @import '../components/online-service/online-service.scss';
+
+
+@import '../components/calculator/calculator.scss';
+@import '../components/mortgage-calculator/mortgage-calculator.scss';
+@import '../components/calculator-questionnaire/calculator-questionnaire.scss';
+@import '../components/proposal/proposal.scss';
+
+@import '../components/rejection/rejection.scss';
+@import '../components/success/success.scss';
 
 @import '../components/department/departament.scss';
 @import '../components/footer/footer.scss';

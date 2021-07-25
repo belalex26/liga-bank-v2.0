@@ -1,0 +1,34 @@
+.carousel .control-dots {
+    bottom: 81px;
+
+    @media screen and (max-width: 1023px) {
+        bottom: 2.1px;
+    }
+
+    @media screen and (max-width: 767px) {
+        bottom: -5px;
+        left: -2px;
+    }
+}
+
+.carousel .control-dots .dot {
+    margin-left: 4.5px;
+    margin-right: 4.5px;
+    background: #2028B6;
+    box-shadow: none;
+    opacity: 1;
+
+    @media screen and (max-width: 767px) {
+        width: 6px;
+        height: 6px;
+        margin-left: 2.5px;
+        margin-right: 2.5px;
+
+    }
+}
+
+.carousel .control-dots .dot.selected,
+.carousel .control-dots .dot:hover {
+    background: #F6F7FF;
+
+}

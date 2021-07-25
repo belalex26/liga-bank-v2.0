@@ -1,7 +1,7 @@
 import React from 'react';
 import Menu from '../menu/menu';
 
-const Header = () => {
+const Header = ({...props}) => {
   return (
     <header className="header">
       <div className="header__container">

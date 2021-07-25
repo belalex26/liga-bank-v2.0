@@ -1,0 +1,152 @@
+.calculator__wrapper {
+    display: grid;
+    grid-template-columns: 660px auto;
+    grid-template-rows: auto auto;
+    padding-left: 50px;
+    column-gap: 4.3%;
+}
+
+.calculator__title {
+    grid-column-start: 1;
+    grid-column-end: -1;
+}
+
+.calculator__form-label {
+    color: #394959;
+    font-size: 16px;
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+}
+
+.calculator__form-input {
+    width: 600px;
+    border: 1px solid #1F1E25;
+    box-sizing: border-box;
+    color: #1F1E25;
+    font-size: 16px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 4px;
+    text-align: center;
+    margin-top: 11px;
+}
+
+.calculator__form-label--price {
+    position: relative;
+}
+
+.calculator__form-text {
+    font-size: 14px;
+    color: #707C87;
+    margin-top: 8px;
+}
+
+.calculator__form-btn {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #ffffff;
+    cursor: pointer;
+    border: none;
+}
+
+.calculator__form-btn--minus {
+    top: 40px;
+    left: 2px;
+
+    &::before {
+        position: absolute;
+        content: '_';
+        font-size: 28px;
+        color: #1F1E25;
+        top: -12px;
+        left: 23px;
+    }
+}
+
+.calculator__form-btn--plus {
+    top: 36px;
+    right: 6px;
+
+    &::before {
+        content: '+';
+        font-size: 38px;
+        color: #1F1E25;
+    }
+}
+
+.calculator__form-label--contribution {
+    margin-top: 6px;
+}
+
+.calculator__form-range {
+    appearance: none;
+    height: 1px;
+    background: #C1C2CA;
+    margin-top: 19px;
+    width: 100%;
+
+    &::-webkit-slider-thumb {
+        color: #2C36F2;
+        width: 14px;
+        height: 14px;
+    }
+}
+
+.calculator__form-desc {
+    display: flex;
+    justify-content: space-between;
+}
+
+.calculator__form-label--time {
+    margin-top: 11px;
+}
+
+
+.calculator__form-label--checkbox {
+    margin-top: 0px;
+}
+
+
+.calculator__form-checkbox-text {
+    position: relative;
+    cursor: pointer;
+    padding-left: 24px;
+    margin-top: 14px;
+
+    &::before {
+        content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 16px;
+		height: 16px;
+		border: 1px solid #2C36F2;
+		background: #FFF;
+		border-radius: 4px;
+    }
+
+    &::after {
+        content: '';
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 16px;
+		height: 16px;
+		border: 1px solid #2C36F2;
+		background: #2C36F2 url('../../images/chec-checkbox.svg') no-repeat center;
+		border-radius: 4px;
+        opacity: 0;
+    }
+}
+
+.calculator__form-checkbox {
+    position: absolute;
+    left: 85px;
+    opacity: 0.01;
+}
+
+.calculator__form-checkbox:checked + .calculator__form-checkbox-text::after {
+    opacity: 1;
+}
