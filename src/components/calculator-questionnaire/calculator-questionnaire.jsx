@@ -35,14 +35,9 @@ const CalculatorQuestionnaire = ({...props}) => {
 
   const onButtonSuccessClick = () => {
     props.onSuccessActive(true)
-
-
   }
-
-
     return (
       <>
-
         <fieldset className={props.questionnaireActive ? "calculator-questionnaire calculator-questionnaire--active" : "calculator-questionnaire"}>
           <p className="calculator-questionnaire__title">Шаг 3. Оформление заявки</p>
 
