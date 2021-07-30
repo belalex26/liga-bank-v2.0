@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
 import logoPops from '../../images/logo-pops.svg'
-
 import ModalHoc from '../../hoc/modal-hoc';
-import { Link } from 'react-router-dom';
+import validate from '../../validateInfo';
 
 const body = document.querySelector('.body');
-
 const ESC_PRESS = 27;
 
 const Modal = (props) => {
@@ -15,18 +13,6 @@ const Modal = (props) => {
         document.addEventListener('keydown', onClose, {passive: true})
         return () => document.removeEventListener('keydown', onClose)
     })
-
-    const onChangeForm = (evt) => {
-        const target = evt.target
-        const value = target.type === 'checkbox' ? target.checked : target.value
-        const name = target.name
-
-        props.setValues({
-            ...props.values,
-            [name]: value,
-        })
-
-      };
 
     const bodyScroll = () => {
         if (props.onModalActive === true) {
@@ -43,13 +29,49 @@ const Modal = (props) => {
         }
     }
 
-
     const onSubmitForm = (evt) => {
-        evt.preventDefault();
-    
+        evt.preventDefault()
         bodyScroll()
+        props.setErrors(validate(props.user))
+        onAddItemClick()
+
+        if (props.user.userName && props.user.password) {
+            props.onModalActive(false)
+        }
     }
 
+    const onChangeForm = (evt) => {
+        const target = evt.target
+        const value = target.type === 'checkbox' ? target.checked : target.value
+        const name = target.name
+
+        props.onUser({
+            ...props.user,
+            [name]: value,
+        })
+      };
+
+    const onPasswordVisible = () => {
+        props.onVisiblePassword(!props.visiblePassword) 
+    }
+
+    const onAddItemClick = () => {
+        if (props.user.userName && props.user.password) {
+            let newUser = {}
+
+            newUser = props.user
+            props.onUserItems([...props.UserItems, newUser])
+
+            resetInput()
+        }
+    }
+
+    const resetInput = () => {
+        props.onUser({
+            userName: '',
+            password: '',
+        })
+    }
       
   return (
     <div className={props.modalActive ? "modal modal--active" : "modal"} onClick={() => props.onModalActive(false)} role="dialog" tabIndex="-1" >
@@ -57,13 +79,17 @@ const Modal = (props) => {
             <h2 className="modal__title visually-hidden">Вход в личный кабинет</h2>
             <img className="modal__logo" src={logoPops} alt="Лига Банк интернет банк" />
             <form className="modal__callback-form" action="#" onSubmit={onSubmitForm}>
-                <label className="modal__label" htmlFor="userName">Логин</label>
-                <input className="modal__input" type="email" name="userName"/>
+                <label className="modal__label" htmlFor="userName">Логин
+                    {props.errors.userName && <span className="modal__error">{props.errors.userName}</span>}
+                </label>
+                <input className="modal__input" type="text" name="userName" min="3" max="20" value={props.user.userName} onChange={onChangeForm}/>
 
                 <label className="modal__label" htmlFor="password">Пароль
-                    <Link className="modal__password-reset" href="/password-reset">Забыли пароль?</Link>
+                    {props.errors.password && <span className="modal__error">{props.errors.password}</span>}
+                    <button className="modal__password-visible" type="button" onMouseDown={onPasswordVisible}></button>
+                    <a className="modal__password-reset" href="/password-reset">Забыли пароль?</a>
                 </label>
-                <input className="modal__input" type="password" name="password"/>
+                <input className="modal__input" type={props.visiblePassword ? "text" : "password"} name="password" min="6" max="10" value={props.user.password} onChange={onChangeForm}/>
 
                 <button className="modal__submit" type="submit">Войти</button>
             </form>
@@ -72,11 +98,6 @@ const Modal = (props) => {
   </div>
   );
 
-};
-
-Modal.prototype = {
-    rating: PropTypes.number.isRequired,
-    onChangeForm: PropTypes.func.isRequired
 };
 
 export default ModalHoc(Modal);

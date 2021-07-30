@@ -14,14 +14,14 @@
         width: 440px;
         height: 290px;
         background: url('../../images/car.png') no-repeat center;
-        left: 165%;
-        top: -3px;
+        left: 51%;
+        top: 55px;
 
         @media screen and (max-width: 1023px) {
             width: 286px;
             height: 260px;
-            left: 57%;
-            top: 135px;
+            left: 55%;
+            top: 58px;
             background: url('../../images/car-tablet.png') no-repeat center;
             background-size: contain;
         }
@@ -38,14 +38,24 @@
 
     @media screen and (max-width: 1023px) {
         font-size: 16px;
-        padding-left: 6%;
+        padding-left: 5.5%;
         padding-top: 54px;
+        padding-bottom: 45px;
     }
 
     @media screen and (max-width: 767px) {
         font-size: 14px;
         padding-left: 5%;
         padding-bottom: 66px;
+        min-height: 362px;
+    }
+}
+
+.credit__container {
+    
+    @media screen and (max-width: 767px) {
+        position: absolute;
+        width: 100%;
     }
 }
 
@@ -59,9 +69,10 @@
 
     @media screen and (max-width: 1023px) {
         font-size: 18px;
-        width: 36%;
+        width: 35%;
         margin-bottom: 25px;
         line-height: 25.2px;
+        text-align: left;
     }
 
     @media screen and (max-width: 767px) {
@@ -76,12 +87,13 @@
     list-style: url('../../images/check.svg');
     padding-left: 19px;
     width: 34%;
-    margin-bottom: 48px;
+    margin-bottom: 30px;
 
     @media screen and (max-width: 1023px) {
         margin-top: 13px;
         width: 49%;
-        margin-bottom: 34px;
+        margin-bottom: 31px;
+        text-align: left;
     }
 
     @media screen and (max-width: 767px) {
@@ -113,6 +125,7 @@
     @media screen and (max-width: 1023px) {
         line-height: 22.4px;
         width: 43%;
+        text-align: left;
     }
 
     @media screen and (max-width: 767px) {

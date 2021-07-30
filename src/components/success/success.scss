@@ -1,7 +1,42 @@
 .success {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(72, 73, 77, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: .5s;
+    color: #48494D;
+    visibility: hidden;
+    z-index: 1000;
+}
+
+.success__content {
+    position: relative;
     background: #F6F7FF;
     border-radius: 4px;
     width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 35px;
+    padding-bottom: 35px;
+
+    @media screen and (max-width: 1023px) {
+        width: 678px;
+    }
+
+    @media screen and (max-width: 767px) {
+        width: 290px;
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
 }
 
 .success__text {
@@ -9,10 +44,95 @@
     font-size: 22px;
     line-height: 30.8px;
     font-weight: 500;
+    margin-bottom: 0px;
+
+    @media screen and (max-width: 767px) {
+        margin-top: 0px;
+        font-size: 18px;
+        text-align: center;
+        width: 71%;
+    }
 }
 
 .success__desc {
     font-size: 16px;
     color: #394959;
     line-height: 22.4px;
+    text-align: center;
+    width: 60%;
+    margin-top: 11px;
+
+    @media screen and (max-width: 1023px) {
+        width: 45%;
+    }
+
+    @media screen and (max-width: 767px) {
+        width: 77%;
+        font-size: 15px;
+        line-height: 20.4px;
+    }
+}
+
+.success__close {
+    position: absolute;
+    top: 7px;
+    right: 8px;
+    background-color: transparent;
+    border: none;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+
+    &::before {
+        position: absolute;
+        content: '';
+        width: 2px;
+        height: 26px;
+        transform: rotate(-45deg);
+        background-color: #1F1E25;
+        top: 15px;
+        left: 24px;
+
+        @media screen and (max-width: 767px) {
+            height: 20px;
+        }
+    }
+
+    &::after {
+        position: absolute;
+        content: '';
+        width: 2px;
+        height: 26px;
+        transform: rotate(45deg);
+        background-color: #1F1E25;
+        top: 15px;
+        left: 24px;
+
+        @media screen and (max-width: 767px) {
+            height: 20px;
+        }
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        outline: none;
+        background: #9F9E9E;
+    }
+
+    @media screen and (max-width: 1023px) {
+        top: 12px;
+        right: 11px;
+    }
+
+    @media screen and (max-width: 767px) {
+        top: -3px;
+        right: -3px;
+    }
+}
+
+.success.success--active {
+    opacity: 1;
+    pointer-events: all;
+    visibility: visible;
 }

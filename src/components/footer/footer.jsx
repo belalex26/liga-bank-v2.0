@@ -16,17 +16,17 @@ const Footer = () => {
                     <ul className="footer__nav-list">
                         
                         <li className="footer__nav-item">
-                            <a className="footer__nav-link" href="/services">
+                            <a className="footer__nav-link" href="#services">
                                 Услуги
                             </a>
                         </li>
                         <li className="footer__nav-item">
-                            <a className="footer__nav-link" href="/credit">
+                            <a className="footer__nav-link" href="#credit">
                                 Рассчитать кредит
                             </a>
                         </li>
                         <li className="footer__nav-item">
-                            <a className="footer__nav-link" href="/contacts">
+                            <a className="footer__nav-link" href="#department">
                                 Контакты
                             </a>
                         </li>

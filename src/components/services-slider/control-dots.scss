@@ -1,0 +1,12 @@
+.services-slider + .carousel .control-dots {
+
+    @media screen and (max-width: 1023px) {
+        bottom: 4.1px;
+        left: -1.5%;
+    }
+
+    @media screen and (max-width: 767px) {
+        bottom: -5px;
+        left: -2px;
+    }
+}

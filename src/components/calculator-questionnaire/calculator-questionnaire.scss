@@ -3,15 +3,28 @@
     width: 770px;
     margin: 0 auto;
     background: #F6F7FF;
-    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 0;
+    margin-left: 18%;
+    margin-top: 14px;
+
+    grid-row-start: 3;
+    grid-column-start: 1;
+    grid-column-end: -1;
+
+    display: none;
 
     @media screen and (max-width: 1023px) {
         width: 685px;
         background: #ffffff;
+        margin-left: -2%;
+    }
+    
+    @media screen and (max-width: 767px) {
+        width: 92%;
+        margin-left: 0;
     }
 }
 
@@ -25,6 +38,14 @@
 
     @media screen and (max-width: 1023px) {
         font-size: 18px;
+        margin-top: 43px;
+        margin-left: 7%;
+    }
+        
+    @media screen and (max-width: 767px) {
+        font-size: 16px;
+        margin-top: 26px;
+        margin-left: 10%;
     }
 }
 
@@ -38,6 +59,13 @@
     @media screen and (max-width: 1023px) {
         width: 99%;
         margin-top: 15px;
+        margin-left: 8%;
+    }
+
+    @media screen and (max-width: 767px) {
+        margin-top: 19px;
+        margin-left: 11%;
+        margin-bottom: 0px;
     }
 }
 
@@ -46,12 +74,22 @@
     justify-content: space-between;
     align-items: flex-end;
     border-bottom: 1px solid #C4C4C4;
+
+    @media screen and (max-width: 767px) {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        margin-bottom: 24px;
+    }
 }
 
 .calculator-questionnaire__item-title {
     color: #394959;
     line-height: 22.4px;
     font-size: 15px;
+    
+    @media screen and (max-width: 767px) {
+        margin-top: 0;
+    }
 }
 
 .calculator-questionnaire__item-value {
@@ -59,6 +97,11 @@
     font-weight: 500;
     margin-top: 18.5px;
     margin-bottom: 11px;
+
+    @media screen and (max-width: 767px) {
+        font-size: 18px;
+        margin-top: 2px;
+    }
 }
 
 .calculator-questionnaire__wrap {
@@ -72,6 +115,13 @@
     @media screen and (max-width: 1023px) {
         margin-left: 0px;
         width: 99%;
+        margin-left: 8%;
+    }
+
+    @media screen and (max-width: 767px) {
+        width: 98%;
+        margin-left: 10%;
+        margin-top: 7px;
     }
 }
 
@@ -93,21 +143,37 @@
     &:active {
         border: 1px solid #000000;
     }
+
+    @media screen and (max-width: 767px) {
+        padding-left: 14px;
+    }
 }
 
 .calculator-questionnaire__input--name {
     width: 100%;
     margin-bottom: 33px;
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 22px;
+    }
 }
 
 .calculator-questionnaire__input--phone {
     width: 47.5%;
+
+    @media screen and (max-width: 767px) {
+        width: 100%;
+        margin-bottom: 22px;
+    }
 }
 
 .calculator-questionnaire__input--email {
     width: 47.5%;
-}
 
+    @media screen and (max-width: 767px) {
+        width: 100%;
+    }
+}
 
 .calculator-questionnaire__btn {
     font-size: 16px;
@@ -120,8 +186,62 @@
     margin-top: 40px;
     margin-bottom: 70px;
 
-    @media screen and (max-width: 1023px) {
-        width: 99%;
+    &:hover,
+    &:focus,
+    &:active {
+        outline: none;
+        background: linear-gradient(90deg, #AE009D 0%, #2C36F2 95.72%);
     }
 
+    &:disabled {
+        background: #2C36F2;
+        color: #F6F7FF;
+        opacity: 0.3;
+    }
+
+    @media screen and (max-width: 1023px) {
+        width: 99%;
+        margin-left: 8%;
+    }
+
+    @media screen and (max-width: 767px) {
+        width: 98%;
+        margin-left: 10.5%;
+        margin-top: 33px;
+        margin-bottom: 47px;
+    }
+}
+
+.calculator-questionnaire__item--price {
+
+    @media screen and (max-width: 767px) {
+        margin-top: -22px;
+    }
+}
+
+.calculator-questionnaire__item--price .calculator-questionnaire__item-value {
+
+    @media screen and (max-width: 767px) {
+        margin-top: 12px;
+        margin-bottom: 2px;
+    }
+}
+
+.calculator-questionnaire__item--time {
+
+    @media screen and (max-width: 767px) {
+        margin-top: -12px;
+    }
+}
+
+.calculator-questionnaire__item--time .calculator-questionnaire__item-value {
+
+    @media screen and (max-width: 767px) {
+        margin-bottom: 3px;
+    }
+}
+
+
+.calculator-questionnaire--active {
+    display: flex;
 }

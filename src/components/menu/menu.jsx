@@ -22,14 +22,14 @@ const Menu = ({...props}) => {
           </div>
           <ul className="menu__list" onClick={() => props.setMenuActive(false)}>
             <li className="menu__item">
-              <Link className="menu__link" to="#services">
+              <a className="menu__link" href="#services">
                 Услуги
-              </Link>
+              </a>
             </li>
             <li className="menu__item">
-              <Link className="menu__link" to="#credit">
+              <a className="menu__link" href="#credit">
                 Рассчитать кредит
-              </Link>
+              </a>
             </li>
             <li className="menu__item">
               <Link className="menu__link" to="/convert">
@@ -37,9 +37,9 @@ const Menu = ({...props}) => {
               </Link>
             </li>
             <li className="menu__item">
-              <Link className="menu__link" to="#department">
+              <a className="menu__link" href="#department">
                 Контакты
-              </Link>
+              </a>
             </li>
         </ul>
         <button className="menu__navigation-bar" onClick={onModalOpenClick}>

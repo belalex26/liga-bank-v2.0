@@ -1,9 +1,12 @@
-.calculator__wrapper {
-    display: grid;
-    grid-template-columns: 660px auto;
-    grid-template-rows: auto auto;
-    padding-left: 50px;
-    column-gap: 4.3%;
+.calculator__form-step--two {
+
+    grid-row-start: 2;
+    grid-row-end: 3;
+    align-self: start;
+    
+    @media screen and (max-width: 1023px) {
+        padding-bottom: 0;
+    }
 }
 
 .calculator__title {
@@ -17,6 +20,10 @@
     margin-top: 18px;
     display: flex;
     flex-direction: column;
+
+    @media screen and (max-width: 767px) {
+        margin-top: 14px;
+    }
 }
 
 .calculator__form-input {
@@ -30,6 +37,23 @@
     border-radius: 4px;
     text-align: center;
     margin-top: 11px;
+
+    &:hover,
+    &:active {
+        border: 1px solid rgba(72, 73, 77, 0.7);
+    }
+
+    &:focus {
+        border: 1px solid rgba(72, 73, 77, 0.7);
+    }
+
+    @media screen and (max-width: 1023px) {
+        width: 676px;
+    }
+
+    @media screen and (max-width: 767px) {
+        width: 290px;
+    }
 }
 
 .calculator__form-label--price {
@@ -74,10 +98,18 @@
         font-size: 38px;
         color: #1F1E25;
     }
+
+    @media screen and (max-width: 767px) {
+        right: 2px;
+    }
 }
 
 .calculator__form-label--contribution {
     margin-top: 6px;
+
+    @media screen and (max-width: 1023px) {
+        margin-top: 0;
+    }
 }
 
 .calculator__form-range {
@@ -101,6 +133,14 @@
 
 .calculator__form-label--time {
     margin-top: 11px;
+
+    @media screen and (max-width: 1023px) {
+        margin-top: 5px;
+    }
+
+    @media screen and (max-width: 767px) {
+        margin-top: -3px;
+    }
 }
 
 
@@ -138,6 +178,15 @@
 		background: #2C36F2 url('../../images/chec-checkbox.svg') no-repeat center;
 		border-radius: 4px;
         opacity: 0;
+    }
+
+    @media screen and (max-width: 1023px) {
+        margin-top: 7px;
+    }
+
+    @media screen and (max-width: 767px) {
+        font-size: 14px;
+        margin-top: 3px;
     }
 }
 

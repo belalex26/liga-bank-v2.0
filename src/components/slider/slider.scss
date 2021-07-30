@@ -70,6 +70,20 @@
     position: relative;
     background: #F6F7FF;
     color: #1F1E25;
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:active {
+        outline: none;
+        background: linear-gradient(90deg, #AE009D 0%, #2C36F2 95.72%);
+    }
+
+    &:disabled {
+        background: #2C36F2;
+        color: #F6F7FF;
+        opacity: 0.3;
+    }
 
     @media screen and (max-width: 1023px) {
         font-size: 16px;

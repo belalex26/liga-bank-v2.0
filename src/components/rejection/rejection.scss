@@ -1,7 +1,21 @@
 .rejection {
+    position: absolute;
     background: #F6F7FF;
     border-radius: 4px;
     width: 500px;
+    align-self: start;
+    padding-bottom: 37px;
+    top: 25px;
+    right: 17px;
+
+    @media screen and (max-width: 1023px) {
+        position: relative;
+        width: 95%;
+        margin-left: 2.5%;
+        left: 0;
+        top: -30px;
+        margin-bottom: 170px;
+    }
 }
 
 .rejection__text {
@@ -9,10 +23,33 @@
     font-size: 22px;
     line-height: 30.8px;
     font-weight: 500;
+    width: 82%;
+    margin-top: 56px;
+    padding-left: 11%;
+    margin-bottom: 0px;
+
+    @media screen and (max-width: 1023px) {
+        padding-left: 9%;
+        padding-top: 55px;
+    }
+
+    @media screen and (max-width: 767px) {
+        font-size: 18px;
+        padding-left: 2.5%;
+        margin-top: 46px;
+
+    }
 }
 
 .rejection__desc {
     font-size: 16px;
     color: #394959;
     line-height: 22.4px;
+    margin-top: 13px;
+    width: 70%;
+    margin-left: 11%;
+
+    @media screen and (max-width: 1023px) {
+        margin-left: 9%;
+    }
 }

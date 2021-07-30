@@ -22,5 +22,6 @@
 .social-bar__link:hover > .social__icon,
 .social-bar__link:active > .social__icon,
 .social-bar__link:focus > .social__icon {
+    outline: none;
     fill: #2C36F2;
 }

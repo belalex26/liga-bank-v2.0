@@ -1,7 +1,7 @@
 .modal {
     height: 100%;
     width: 100%;
-    background-color: rgba(72, 73, 77, 0.2);
+    background-color: rgba(72, 73, 77, 0.7);
     position: fixed;
     top: 0;
     left: 0;
@@ -12,8 +12,8 @@
     pointer-events: none;
     transition: .5s;
     color: #48494D;
-    font-family: 'Open Sans', 'Arial', sans-serif;
     visibility: hidden;
+    z-index: 1000;
 }
 
 .modal.modal--active {
@@ -98,6 +98,24 @@
     }
 }
 
+.modal__password-visible {
+    position: absolute;
+    top: 40px;
+    right: 22px;
+    border: none;
+    width: 30px;
+    height: 30px;
+    background: #ffffff url('../../images/eye.svg') no-repeat center;
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:active {
+        outline: none;
+        box-shadow: 0 4px 4px #9F9E9E;
+    }
+}
+
 .modal__password-reset {
     position: absolute;
     right: 0;
@@ -105,6 +123,7 @@
     text-decoration: none;
     color: #707C87;
     font-size: 12px;
+    cursor: pointer;
 
     @media screen and (max-width: 767px) {
         font-size: 14px;
@@ -219,4 +238,13 @@
         top: 28px;
         right: -3px;
     }
+}
+
+.modal__error {
+    position: absolute;
+    color: #D12136;
+    font-size: 13px;
+    font-weight: 600;
+    top: 90px;
+    left: 0px;
 }

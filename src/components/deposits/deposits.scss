@@ -14,12 +14,12 @@
         width: 440px;
         height: 290px;
         background: url('../../images/piggybank.png') no-repeat center;
-        left: 125%;
-        top: 5px;
+        left: 51%;
+        top: 61px;
 
         @media screen and (max-width: 1023px) {
-            left: 57%;
-            top: 135px;
+            left: 55%;
+            top: 60px;
             width: 286px;
             height: 260px;
             background: url('../../images/piggybank-tablet.png') no-repeat center;
@@ -29,7 +29,7 @@
         @media screen and (max-width: 767px) {
             right: 0;
             left: auto;
-            top: 121px;
+            top: 99px;
             width: 87px;
             height: 113px;
             background: url('../../images/piggybank-mobile.png') no-repeat center;
@@ -38,13 +38,24 @@
 
     @media screen and (max-width: 1023px) {
         font-size: 16px;
-        padding-left: 6%;
+        padding-left: 5.5%;
         padding-top: 54px;
+        position: absolute;
+        width: 100%;
     }
 
     @media screen and (max-width: 767px) {
         font-size: 14px;
         padding-left: 5%;
+        min-height: 362px;
+    }
+}
+
+.deposits__container {
+    
+    @media screen and (max-width: 767px) {
+        position: absolute;
+        width: 100%;
     }
 }
 
@@ -61,6 +72,7 @@
         width: 43%;
         margin-bottom: 25px;
         line-height: 25.2px;
+        text-align: left;
     }
 
     @media screen and (max-width: 767px) {
@@ -80,6 +92,7 @@
     @media screen and (max-width: 1023px) {
         margin-top: 13px;
         width: 49%;
+        text-align: left;
     }
 
     @media screen and (max-width: 767px) {
@@ -111,9 +124,28 @@
     padding: 16px 32px;
     border-radius: 4px;
     font-size: 16px;
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:active {
+        outline: none;
+        background: linear-gradient(90deg, #AE009D 0%, #2C36F2 95.72%);
+    }
+
+    &:disabled {
+        background: #2C36F2;
+        color: #F6F7FF;
+        opacity: 0.3;
+    }
+
+    @media screen and (max-width: 1023px) {
+        margin-left: -73%;
+    }
 
     @media screen and (max-width: 767px) {
         font-size: 14px;
         padding: 14px 85px;
+        margin-left: -10%;
     }
 }

@@ -14,12 +14,12 @@
         width: 440px;
         height: 290px;
         background: url('../../images/mobail.png') no-repeat center;
-        left: 120%;
-        top: -3px;
+        left: 51%;
+        top: 54px;
 
         @media screen and (max-width: 1023px) {
-            left: 57%;
-            top: 135px;
+            left: 55%;
+            top: 59px;
             width: 286px;
             height: 260px;
             background: url('../../images/mobail-tablet.png') no-repeat center;
@@ -39,15 +39,23 @@
         font-size: 16px;
         padding-left: 6%;
         padding-top: 54px;
-        padding-bottom: 92px;
+        padding-bottom: 86px;
     }
 
     @media screen and (max-width: 767px) {
         font-size: 14px;
         padding-left: 4.5%;
         padding-bottom: 66px;
+        min-height: 362px;
+        width: 100%;
     }
+}
+
+.online-service__container {
     
+    @media screen and (max-width: 767px) {
+        position: absolute;
+    }
 }
 
 .online-service__title {
@@ -63,16 +71,15 @@
         width: 46%;
         margin-bottom: 25px;
         line-height: 25.2px;
+        text-align: left;
     }
 
     @media screen and (max-width: 767px) {
         font-size: 16px;
         width: 72%;
-        margin-bottom: 21px;
+        margin-bottom: 19px;
         line-height: 22.4px;
     }
-
-    
 }
 
 .online-service__list {
@@ -84,6 +91,7 @@
     @media screen and (max-width: 1023px) {
         margin-top: 13px;
         width: 45%;
+        text-align: left;
     }
 
     @media screen and (max-width: 767px) {
@@ -91,7 +99,7 @@
         width: 72%;
         line-height: 18.2px;
         padding-left: 15px;
-        margin-bottom: 39px;
+        margin-bottom: 35px;
     }
 }
 
@@ -120,9 +128,29 @@
     padding: 16px 32px;
     border-radius: 4px;
     font-size: 16px;
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &:active {
+        outline: none;
+        background: linear-gradient(90deg, #AE009D 0%, #2C36F2 95.72%);
+    }
+
+    &:disabled {
+        background: #2C36F2;
+        color: #F6F7FF;
+        opacity: 0.3;
+    }
+
+
+    @media screen and (max-width: 1023px) {
+        margin-left: -73%;
+    }
 
     @media screen and (max-width: 767px) {
         font-size: 14px;
         padding: 14px 85px;
+        margin-left: -5%;
     }
 }
