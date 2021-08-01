@@ -81,12 +81,12 @@ const MortgageCalculator = ({...props}) => {
                 </label>
 
                 <label className="calculator__form-label calculator__form-label--contribution">Первоначальный взнос
-                    <input className="calculator__form-range" type="range" name="contribution" data-min="10" step='5' value={props.contribution} onChange={((evt) => props.onContribution(evt.target.value))} />
+                    <input className="calculator__form-range" type="range" name="contribution" min="10" step='5' value={props.contribution} onChange={((evt) => props.onContribution(evt.target.value))} />
                     <span className="calculator__form-text">10%</span>
                 </label>
 
                 <label className="calculator__form-label calculator__form-label--time">Срок кредитования
-                    <input className="calculator__form-input" type="number"value={props.time} onChange={((evt) => props.onTime(evt.target.value))} placeholder="5 лет"/>
+                    <input className="calculator__form-input" type="number" value={props.time} onChange={((evt) => props.onTime(evt.target.value))} placeholder="5 лет"/>
                 </label>
 
                 <label className="calculator__form-label calculator__form-label--time-range">
