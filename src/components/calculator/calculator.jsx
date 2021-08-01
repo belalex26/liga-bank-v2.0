@@ -8,6 +8,7 @@ import CalculatorHoc from '../../hoc/calculator-hoc'
 const Calculator = ({...props}) => {
 
   const options = ['Ипотечное кредитование' , 'Автомобильное кредитование']
+  
 
   const getOption = () => {
     if (!props.target) {
@@ -35,10 +36,15 @@ const Calculator = ({...props}) => {
           onDeposit={props.onDeposit}
           contribution={props.contribution}
           onContribution={props.onContribution}
+          questionnaireActive={props.questionnaireActive}
+          onQuestionnaireActive={props.onQuestionnaireActive}
           time={props.time}
           onTime={props.onTime}
           capital={props.capital}
           onCapital={props.onCapital}
+          counter={props.counter}
+          onCounter={props.onCounter}
+
 
         />
       )
@@ -61,6 +67,8 @@ const Calculator = ({...props}) => {
               onCarInsurance={props.onCarInsurance}
               questionnaireActive={props.questionnaireActive}
               onQuestionnaireActive={props.onQuestionnaireActive}
+              counter={props.counter}
+              onCounter={props.onCounter}
             />
         </>
         )

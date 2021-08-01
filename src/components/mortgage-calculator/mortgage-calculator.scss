@@ -76,7 +76,7 @@
 }
 
 .calculator__form-btn--minus {
-    top: 40px;
+    top: 38px;
     left: 2px;
 
     &::before {
@@ -84,7 +84,7 @@
         content: '_';
         font-size: 28px;
         color: #1F1E25;
-        top: -12px;
+        top: -9px;
         left: 23px;
     }
 }
@@ -198,4 +198,24 @@
 
 .calculator__form-checkbox:checked + .calculator__form-checkbox-text::after {
     opacity: 1;
+}
+
+.calculator__form-checkbox:hover + .calculator__form-checkbox-text,
+.calculator__form-checkbox:focus + .calculator__form-checkbox-text,
+.calculator__form-checkbox:active + .calculator__form-checkbox-text {
+    border: 1px solid rgba(72, 73, 77, 0.7);
+}
+
+
+
+
+.calculator__form-error {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    background: #ffffff;
+    color: #D12136;
+    font-size: 13px;
+    font-weight: 600;
 }

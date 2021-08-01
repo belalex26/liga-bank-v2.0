@@ -11,8 +11,7 @@ const Proposal = ({...props}) => {
     let period = props.time*12
     let payment = 0
 
-    console.log(props.time)
-
+    console.log(props.target)
 
     const renderPriceIfTagret = () => {
         if (props.target === 'Ипотечное кредитование') {
@@ -36,7 +35,6 @@ const Proposal = ({...props}) => {
                 )
             }
         }  else {
-
             return(
                 credit
             )
@@ -109,7 +107,15 @@ const Proposal = ({...props}) => {
         <CalculatorQuestionnaire
             questionnaireActive={props.questionnaireActive}
             onQuestionnaireActive={props.onQuestionnaireActive}
+            counter={props.counter}
+            onCounter={props.onCounter}
+            credit={credit}
+            price={props.price}
+            deposit={props.deposit}
+            time={props.time}
+            target={props.target}
         />
+            
       </>
   );
 };

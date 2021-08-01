@@ -5,8 +5,6 @@ import Proposal from '../proposal/proposal';
 
 const MortgageCalculator = ({...props}) => {
 
-    console.log(props.target)
-
     let price = parseFloat(props.price)
     let deposit = Math.round(price * (props.contribution/100))
     let credit = price - deposit
@@ -29,7 +27,7 @@ const MortgageCalculator = ({...props}) => {
     }
 
     const renderProposal = () => {
-        if (props.price) {
+        if (props.price && props.time) {
             if (credit < 500000) {
                 return(
                     <Rejection target={props.target}/>
@@ -40,10 +38,14 @@ const MortgageCalculator = ({...props}) => {
                         contribution={props.contribution}
                         target={props.target}
                         credit={credit}
+                        price={props.price}
                         time={props.time}
                         capital={props.capital}
+                        deposit={deposit}
                         questionnaireActive={props.questionnaireActive}
                         onQuestionnaireActive={props.onQuestionnaireActive}
+                        counter={props.counter}
+                        onCounter={props.onCounter}
                     />
                 )
             }

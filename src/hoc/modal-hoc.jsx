@@ -14,12 +14,10 @@ const ModalHoc = (Component) => {
 
         const [visiblePassword, setVisiblePassword] = useState(false)
         const [errors, setErrors] = useState({});
-        const [formValid, setFormValid] = useState(false);
 
         useEffect(() => {
             setUserItems(users);
         }, []);
-
 
          useEffect(() => {
             const body = document.querySelector('body');
@@ -30,9 +28,6 @@ const ModalHoc = (Component) => {
             localStorage.setItem('users', JSON.stringify(UserItems))
          // eslint-disable-next-line react-hooks/exhaustive-deps
          }, [UserItems]);
-
-         
-        
 
         return (
             <Component

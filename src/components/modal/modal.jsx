@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 //import PropTypes from 'prop-types';
 import logoPops from '../../images/logo-pops.svg'
 import ModalHoc from '../../hoc/modal-hoc';
-import validate from '../../validateInfo';
+import validate from '../../validateInfo/validateInfo-user';
 
 const body = document.querySelector('.body');
 const ESC_PRESS = 27;
@@ -49,7 +49,7 @@ const Modal = (props) => {
             ...props.user,
             [name]: value,
         })
-      };
+    };
 
     const onPasswordVisible = () => {
         props.onVisiblePassword(!props.visiblePassword) 
@@ -82,14 +82,14 @@ const Modal = (props) => {
                 <label className="modal__label" htmlFor="userName">Логин
                     {props.errors.userName && <span className="modal__error">{props.errors.userName}</span>}
                 </label>
-                <input className="modal__input" type="text" name="userName" min="3" max="20" value={props.user.userName} onChange={onChangeForm}/>
+                <input className="modal__input" type="text" name="userName" value={props.user.userName} onChange={onChangeForm}/>
 
                 <label className="modal__label" htmlFor="password">Пароль
                     {props.errors.password && <span className="modal__error">{props.errors.password}</span>}
                     <button className="modal__password-visible" type="button" onMouseDown={onPasswordVisible}></button>
                     <a className="modal__password-reset" href="/password-reset">Забыли пароль?</a>
                 </label>
-                <input className="modal__input" type={props.visiblePassword ? "text" : "password"} name="password" min="6" max="10" value={props.user.password} onChange={onChangeForm}/>
+                <input className="modal__input" type={props.visiblePassword ? "text" : "password"} name="password" value={props.user.password} onChange={onChangeForm}/>
 
                 <button className="modal__submit" type="submit">Войти</button>
             </form>
