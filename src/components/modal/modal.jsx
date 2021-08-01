@@ -82,11 +82,11 @@ const Modal = (props) => {
                 <label className="modal__label" htmlFor="userName">Логин
                     {props.errors.userName && <span className="modal__error">{props.errors.userName}</span>}
                 </label>
-                <input className="modal__input" type="text" name="userName" value={props.user.userName} onChange={onChangeForm}/>
+                <input className="modal__input" type="text" id="userName" name="userName" value={props.user.userName} onChange={onChangeForm}/>
 
                 <label className="modal__label" htmlFor="password">Пароль
                     {props.errors.password && <span className="modal__error">{props.errors.password}</span>}
-                    <button className="modal__password-visible" type="button" onMouseDown={onPasswordVisible}></button>
+                    <button className="modal__password-visible" type="button" onMouseDown={onPasswordVisible} id="password"></button>
                     <a className="modal__password-reset" href="/password-reset">Забыли пароль?</a>
                 </label>
                 <input className="modal__input" type={props.visiblePassword ? "text" : "password"} name="password" value={props.user.password} onChange={onChangeForm}/>

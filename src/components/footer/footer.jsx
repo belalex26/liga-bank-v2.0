@@ -45,11 +45,11 @@ const Footer = () => {
                 </div>
                 <div className="footer__contact">
                     <div className="footer__sms">
-                        <a className="footer__sms-link" href="sms:[0904]">*0904</a>
+                        <a className="footer__sms-link" href="sms:0904">*0904</a>
                         <p className="footer__sms-info">Бесплатно для абонентов МТС, Билайн, Мегафон, Теле2</p>
                     </div>
                     <div className="footer__phone">
-                        <a className="footer__phone-link" href="tel:[88001112233]">8 800 111 22 33</a>
+                        <a className="footer__phone-link" href="tel:88001112233">8 800 111 22 33</a>
                         <p className="footer__phone-info">Бесплатный для всех городов России</p>
                     </div>
                     <div className="fooler__socials">

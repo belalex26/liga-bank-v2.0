@@ -24,9 +24,13 @@ const CalculatorQuestionnaire = ({...props}) => {
   }
 
   const renderTime = () => {
-    if (props.time === 1) {
+    if (props.time === '1') {
       return(
         props.time + ' год'
+      )
+    } else if ( '1' < props.time < '4') {
+      return(
+        props.time + ' года'
       )
     } else {
       return(
@@ -96,7 +100,7 @@ const resetInput = () => {
 
           <div className="calculator-questionnaire__wrap">
             <label className="calculator-questionnaire__label" htmlFor="fullName"></label>
-            <input className="calculator-questionnaire__input calculator-questionnaire__input--name" type="text" name="fullName" required placeholder="ФИО" value={props.fullName} onChange={((evt) => props.onFullName(evt.target.value))} pattern="([А-Яа-яЁё])"/>
+            <input className="calculator-questionnaire__input calculator-questionnaire__input--name" type="text" id="fullName" name="fullName" required placeholder="ФИО" value={props.fullName} onChange={((evt) => props.onFullName(evt.target.value))} pattern="([А-Яа-яЁё])"/>
 
             <label className="calculator-questionnaire__label" htmlFor="phone"></label>
             <InputMask 
@@ -105,12 +109,13 @@ const resetInput = () => {
               onChange={((evt) => props.onPhone(evt.target.value))} 
               placeholder="Телефон"
               className="calculator-questionnaire__input calculator-questionnaire__input--phone"
+              id="phone"
               type="tel"
               required
             />
 
             <label className="calculator-questionnaire__label" htmlFor="email"></label>
-            <input className="calculator-questionnaire__input calculator-questionnaire__input--email" type="email" name="email" required placeholder="E-mail" value={props.email} onChange={((evt) => props.onEmail(evt.target.value))} pattern="(/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/igm)"  />
+            <input className="calculator-questionnaire__input calculator-questionnaire__input--email" type="email" id="email" name="email" required placeholder="E-mail" value={props.email} onChange={((evt) => props.onEmail(evt.target.value))} pattern="(/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/igm)"  />
           </div>
 
           <button className="calculator-questionnaire__btn" type="submit" onClick={onButtonSuccessClick}>Отправить</button>

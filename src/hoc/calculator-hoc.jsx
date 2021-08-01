@@ -4,7 +4,7 @@ const CalculatorHoc = (Component) => {
     
     const CalculatorState = () => {
 
-        const [target, setTarget] = useState('Автомобильное кредитование')
+        const [target, setTarget] = useState('Выберите цель кредита')
         const [selectActive, setSelectActive] = useState(false)
 
         const [questionnaireActive , setQuestionnaireActive] = useState(false)

@@ -2,7 +2,7 @@ import React from 'react';
 
 import Rejection from '../rejection/rejection';
 import Proposal from '../proposal/proposal';
-import validateInfoCalc from '../../validateInfo/validateInfo-calc';
+
 
 const AutoCalculator = ({...props}) => {
 
@@ -29,9 +29,21 @@ const AutoCalculator = ({...props}) => {
         }
     }
 
+    const onPriceValid = () => {
+        if (price < 500000) {
+            return(
+                <span className="calculator__form-error">Некорректное значение</span>
+            )
+        } else if (price > 5000000) {
+            return(
+                <span className="calculator__form-error">Некорректное значение</span>
+            )
+        }
+    }
+
     const renderProposal = () => {
+
         if (props.price && props.time) {
-            // props.onErrors(validateInfoCalc(price))
 
             if (credit < 200000) {
                 return(
@@ -61,29 +73,36 @@ const AutoCalculator = ({...props}) => {
         <>
             <fieldset className="calculator__form-step calculator__form-step--two">
                 <legend className="calculator__form-title">Шаг 2. Введите параметры кредита</legend>
-                
-                <label className="calculator__form-label calculator__form-label--price">Стоимость автомобиля
-                    
-                    <button className="calculator__form-btn calculator__form-btn--minus" type="button" onClick={onButtonMinusClick} ></button>
-                    <input className="calculator__form-input" type="text" name="price" min='200000' max='5000000' value={props.price} onChange={((evt) => props.onPrice(evt.target.value))} placeholder="1 200 000 рублей"/>
-                    <button className="calculator__form-btn calculator__form-btn--plus" type="button" onClick={onButtonPlusClick}></button>
-                    <span className="calculator__form-text">От 500 000  до 5 000 000 рублей</span>   
-                </label>
 
-                <label className="calculator__form-label calculator__form-label--contribution">Первоначальный взнос
+                <div className="calculator__form-price">
+                    <button className="calculator__form-btn calculator__form-btn--minus" type="button" onClick={onButtonMinusClick}></button>
+                    <label className="calculator__form-label calculator__form-label--price">Стоимость автомобиля
+                        {onPriceValid()}
+                        <input className="calculator__form-input" type="text" name="price" data-min='200000' data-max='5000000' value={props.price} onChange={((evt) => props.onPrice(evt.target.value))} placeholder="1 200 000 рублей"/>
+                    </label>
+                    <button className="calculator__form-btn calculator__form-btn--plus" type="button" onClick={onButtonPlusClick}></button>
+                    <p className="calculator__form-text">От 500 000  до 5 000 000 рублей</p>   
+                </div>
+
+                <label className="calculator__form-label calculator__form-label--deposit">
                     <input className="calculator__form-input" type="number" value={depositValue} onChange={((evt) => props.onContribution(evt.target.value))} placeholder="240 000 рублей"/>
+                </label>
+            
+                <label className="calculator__form-label calculator__form-label--contribution">Первоначальный взнос
                     <input className="calculator__form-range" type="range" name="contribution" min='20' step='5' value={contribution} onChange={((evt) => props.onContribution(evt.target.value))}  />
                     <span className="calculator__form-text">20%</span>
                 </label>
 
-
-                <label className="calculator__form-label">Срок кредитования
+                <label className="calculator__form-label calculator__form-label--time">Срок кредитования
                     <input className="calculator__form-input" type="text" value={props.time} onChange={((evt) => props.onTime(evt.target.value))} placeholder="1 год"/>
+                </label>
+                <div className="calculator__form-desc">
+                        <p className="calculator__form-text">1 год</p>
+                        <p className="calculator__form-text">5 лет</p>
+                </div>
+
+                <label className="calculator__form-label calculator__form-label--time-range">
                     <input className="calculator__form-range" type="range" name="period" min='1' max="5" step='1' value={props.time} onChange={((evt) => props.onTime(evt.target.value))} />
-                    <span className="calculator__form-desc">
-                        <span className="calculator__form-text">1 год</span>
-                        <span className="calculator__form-text">5 лет</span>
-                    </span>
                 </label>
 
                 <label className="calculator__form-label calculator__form-label--checkbox">

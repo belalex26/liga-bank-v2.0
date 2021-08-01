@@ -41,8 +41,6 @@ const CalculatorQuestionnaireHoc = (Component) => {
                 fullName={fullName} onFullName={setFullName}
                 phone={phone} onPhone={setPhone}
                 email={email} onEmail={setEmail}
-                
-
             />
         );
     
