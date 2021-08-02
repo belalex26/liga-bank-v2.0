@@ -1,6 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+const ESC_PRESS = 27;
+const body = document.querySelector('.body');
 
 const Success = ({...props}) => {
+
+  useEffect(() => {
+    document.addEventListener('keydown', onClose, {passive: true})
+    return () => document.removeEventListener('keydown', onClose)
+})
+
+const bodyScroll = () => {
+  if (props.onModalActive === true) {
+      body.style.overflow = 'hidden'
+  } else {
+      body.style.overflow = 'auto'
+  }
+}
+
+const onClose = (evt) => {
+  if (evt.keyCode === ESC_PRESS) {
+      props.onSuccessActive(false)
+      bodyScroll()
+  }
+}
 
   return (
       <div className={props.successActive ? "success success--active" : "success"} onClick={() => props.onSuccessActive(false)} role="dialog" tabIndex="-1">

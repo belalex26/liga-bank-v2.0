@@ -1,11 +1,13 @@
 import React from 'react';
+import InputMask from "react-input-mask";
 
 import Success from '../success/success';
 import CalculatorQuestionnaireHoc from '../../hoc/calculator-questionnaireр-hoc';
 
 const CalculatorQuestionnaire = ({...props}) => {
+  console.log(props.target)
 
-  const renderTarget= () => {
+  const renderTarget = () => {
     if (props.target === 'Ипотечное кредитование') {
       return('Ипотека')
     } else {
@@ -22,9 +24,13 @@ const CalculatorQuestionnaire = ({...props}) => {
   }
 
   const renderTime = () => {
-    if (props.time === 1) {
+    if (props.time === '1') {
       return(
         props.time + ' год'
+      )
+    } else if ( '1' < props.time < '4') {
+      return(
+        props.time + ' года'
       )
     } else {
       return(
@@ -33,16 +39,35 @@ const CalculatorQuestionnaire = ({...props}) => {
     }
   }
 
+const onAddItemClick = () => {
+
+    let newApplication = {
+      fullName: props.fullName,
+      phone: props.phone,
+      email: props.email
+    }
+
+    props.onApplicationItems([...props.applicationItems, newApplication])
+
+    resetInput()
+  
+}
+
+const resetInput = () => {
+  props.onFullName('')
+  props.onPhone('')
+  props.onEmail('')
+}
+
   const onButtonSuccessClick = () => {
-    props.onSuccessActive(true)
-
-
+    if (props.fullName && props.phone && props.email) {
+      props.onSuccessActive(true)
+      props.onCounter(props.counter + 1)
+      onAddItemClick()
+    }
   }
-
-
     return (
       <>
-
         <fieldset className={props.questionnaireActive ? "calculator-questionnaire calculator-questionnaire--active" : "calculator-questionnaire"}>
           <p className="calculator-questionnaire__title">Шаг 3. Оформление заявки</p>
 
@@ -64,7 +89,7 @@ const CalculatorQuestionnaire = ({...props}) => {
 
             <li className="calculator-questionnaire__item">
               <p className="calculator-questionnaire__item-title">Первоначальный взнос</p>
-              <p className="calculator-questionnaire__item-value">{`${props.price * (props.contribution/100)} рублей`}</p>
+              <p className="calculator-questionnaire__item-value">{props.deposit} рублей</p>
             </li>
 
             <li className="calculator-questionnaire__item calculator-questionnaire__item--time">
@@ -74,14 +99,23 @@ const CalculatorQuestionnaire = ({...props}) => {
           </ul>
 
           <div className="calculator-questionnaire__wrap">
-            <label className="calculator-questionnaire__label" htmlFor="userName"></label>
-            <input className="calculator-questionnaire__input calculator-questionnaire__input--name" type="text" name="userName" placeholder="ФИО"/>
+            <label className="calculator-questionnaire__label" htmlFor="fullName"></label>
+            <input className="calculator-questionnaire__input calculator-questionnaire__input--name" type="text" id="fullName" name="fullName" required placeholder="ФИО" value={props.fullName} onChange={((evt) => props.onFullName(evt.target.value))} pattern="([А-Яа-яЁё])"/>
 
             <label className="calculator-questionnaire__label" htmlFor="phone"></label>
-            <input className="calculator-questionnaire__input calculator-questionnaire__input--phone" type="phone" name="phone" placeholder="Телефон" pattern="[\+]\d{1}\s[\(]\d{3}[\)]\s\d{3}[\-]\d{2}[\-]\d{2}" minlength="18" maxlength="18"/>
+            <InputMask 
+              mask="+9(999)999-99-99"
+              value={props.phone} 
+              onChange={((evt) => props.onPhone(evt.target.value))} 
+              placeholder="Телефон"
+              className="calculator-questionnaire__input calculator-questionnaire__input--phone"
+              id="phone"
+              type="tel"
+              required
+            />
 
             <label className="calculator-questionnaire__label" htmlFor="email"></label>
-            <input className="calculator-questionnaire__input calculator-questionnaire__input--email" type="email" name="email" placeholder="E-mail"/>
+            <input className="calculator-questionnaire__input calculator-questionnaire__input--email" type="email" id="email" name="email" required placeholder="E-mail" value={props.email} onChange={((evt) => props.onEmail(evt.target.value))} pattern="(/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/igm)"  />
           </div>
 
           <button className="calculator-questionnaire__btn" type="submit" onClick={onButtonSuccessClick}>Отправить</button>

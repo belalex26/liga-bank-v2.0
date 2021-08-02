@@ -56,7 +56,7 @@
     }
 }
 
-.calculator__form-label--price {
+.calculator__form-price {
     position: relative;
 }
 
@@ -76,16 +76,16 @@
 }
 
 .calculator__form-btn--minus {
-    top: 40px;
-    left: 2px;
+    top: 36px;
+    left: 5px;
 
     &::before {
         position: absolute;
         content: '_';
         font-size: 28px;
         color: #1F1E25;
-        top: -12px;
-        left: 23px;
+        top: -6px;
+        left: 21px;
     }
 }
 
@@ -123,6 +123,7 @@
         color: #2C36F2;
         width: 14px;
         height: 14px;
+        cursor: pointer;
     }
 }
 
@@ -143,11 +144,9 @@
     }
 }
 
-
 .calculator__form-label--checkbox {
     margin-top: 0px;
 }
-
 
 .calculator__form-checkbox-text {
     position: relative;
@@ -199,3 +198,33 @@
 .calculator__form-checkbox:checked + .calculator__form-checkbox-text::after {
     opacity: 1;
 }
+
+.calculator__form-checkbox:hover + .calculator__form-checkbox-text,
+.calculator__form-checkbox:focus + .calculator__form-checkbox-text,
+.calculator__form-checkbox:active + .calculator__form-checkbox-text {
+    border: 1px solid rgba(72, 73, 77, 0.7);
+}
+
+
+.calculator__form-error {
+    position: absolute;
+    top: 17px;
+    left: 7px;
+    padding: 5px;
+    background: #ffffff;
+    color: #D12136;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.calculator__form-error + .calculator__form-input {
+    border: 2px solid #D12136;
+}
+
+.calculator__form-error + .calculator__form-input:hover,
+.calculator__form-error + .calculator__form-input:focus,
+.calculator__form-error + .calculator__form-input:active {
+    border: 2px solid #D12136;
+    box-shadow: inset 0 0 2px 2px #D12136;
+} 
+

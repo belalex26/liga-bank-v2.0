@@ -4,7 +4,7 @@ const CalculatorHoc = (Component) => {
     
     const CalculatorState = () => {
 
-        const [target, setTarget] = useState('Автомобильное кредитование')
+        const [target, setTarget] = useState('Выберите цель кредита')
         const [selectActive, setSelectActive] = useState(false)
 
         const [questionnaireActive , setQuestionnaireActive] = useState(false)
@@ -14,6 +14,7 @@ const CalculatorHoc = (Component) => {
         const [contribution, setContribution] = useState(10);
         const [time, setTime] = useState('')
         const [counter, setCounter] = useState(1)
+        const [errors, setErrors] = useState({});
 
         //чек-боксы
         const [capital, setCapital] = useState(false)
@@ -34,9 +35,8 @@ const CalculatorHoc = (Component) => {
                 capital={capital} onCapital={setCapital}
                 lifeInsurance={lifeInsurance} onLifeInsurance={setLifeInsurance}
                 carInsurance={carInsurance} onCarInsurance={setCarInsurance}
-                
-
                 counter={counter} onCounter={setCounter}
+                errors={errors} onErrors={setErrors}
 
             />
         );

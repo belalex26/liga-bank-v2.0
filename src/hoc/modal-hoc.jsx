@@ -19,7 +19,6 @@ const ModalHoc = (Component) => {
             setUserItems(users);
         }, []);
 
-
          useEffect(() => {
             const body = document.querySelector('body');
             body.style.overflow = props.modalActive ? 'hidden' : 'auto';
@@ -29,9 +28,6 @@ const ModalHoc = (Component) => {
             localStorage.setItem('users', JSON.stringify(UserItems))
          // eslint-disable-next-line react-hooks/exhaustive-deps
          }, [UserItems]);
-
-         
-        
 
         return (
             <Component
