@@ -17,22 +17,22 @@ const Tabs = ({...props}) => {
             <h2 className="tabs__title  visually-hidden">Услуги</h2>
             <div className="tabs__container">
                 <div className="tabs__triggers">
-                    <a className={props.activeTabs === 1 ? "tabs__triggers-item tabs__triggers-item--active tabs__triggers-item--deposits" : "tabs__triggers-item tabs__triggers-item--deposits"} onClick={() => toggleTabs(1)} href="#deposits">Вклады</a>
-                    <a className={props.activeTabs === 2 ? "tabs__triggers-item tabs__triggers-item--active tabs__triggers-item--credit" : "tabs__triggers-item tabs__triggers-item--credit"} onClick={() => toggleTabs(2)} href="#credit">Кредиты</a>
-                    <a className={props.activeTabs === 3 ? "tabs__triggers-item tabs__triggers-item--active tabs__triggers-item--insurance" : "tabs__triggers-item tabs__triggers-item--insurance"} onClick={() => toggleTabs(3)} href="#insurance">Страхование</a>
-                    <a className={props.activeTabs === 4 ? "tabs__triggers-item tabs__triggers-item--active tabs__triggers-item--online" : "tabs__triggers-item tabs__triggers-item--online"} onClick={() => toggleTabs(4)} href="#online">Онлайн-сервисы</a>
+                    <a className={props.activeTabs === 1 ? "tabs__triggers-item tabs__triggers-item--active tabs__triggers-item--deposits" : "tabs__triggers-item tabs__triggers-item--deposits"} onClick={() => toggleTabs(1)} href="#deposits-tabs">Вклады</a>
+                    <a className={props.activeTabs === 2 ? "tabs__triggers-item tabs__triggers-item--active tabs__triggers-item--credit" : "tabs__triggers-item tabs__triggers-item--credit"} onClick={() => toggleTabs(2)} href="#credit-tabs">Кредиты</a>
+                    <a className={props.activeTabs === 3 ? "tabs__triggers-item tabs__triggers-item--active tabs__triggers-item--insurance" : "tabs__triggers-item tabs__triggers-item--insurance"} onClick={() => toggleTabs(3)} href="#insurance-tabs">Страхование</a>
+                    <a className={props.activeTabs === 4 ? "tabs__triggers-item tabs__triggers-item--active tabs__triggers-item--online" : "tabs__triggers-item tabs__triggers-item--online"} onClick={() => toggleTabs(4)} href="#online-tabs">Онлайн-сервисы</a>
                 </div>
                  <div className="tabs__content">
-                    <div className={props.activeTabs === 1 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="deposits">
+                    <div className={props.activeTabs === 1 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="deposits-tabs">
                         <Deposits />
                     </div>
-                    <div className={props.activeTabs === 2 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="credit">
+                    <div className={props.activeTabs === 2 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="credit-tabs">
                         <Credit />
                     </div>
-                    <div className={props.activeTabs === 3 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="insurance">
+                    <div className={props.activeTabs === 3 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="insurance-tabs">
                         <Insurance />
                     </div>
-                    <div className={props.activeTabs === 4 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="online">
+                    <div className={props.activeTabs === 4 ? "tabs__content-item tabs__content-item--active" : "tabs__content-item"} id="online-tabs">
                         <OnlineService/>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 
 const MenuHoc = (Component) => {
     
@@ -9,12 +10,19 @@ const MenuHoc = (Component) => {
         return (
             <Component
                 modalActive={modalActive} onModalActive={setModalActive}
-                menuActive={menuActive} setMenuActive={setMenuActive}
+                menuActive={menuActive} onMenuActive={setMenuActive}
             />
         );
     
     }
     return MenuState;
 }
+
+MenuHoc.prototype = {
+    modalActive: PropTypes.bool.isRequired,
+    onModalActive: PropTypes.func.isRequired,
+    menuActive: PropTypes.bool.isRequired,
+    onMenuActive: PropTypes.func.isRequired,
+  };
 
 export default MenuHoc

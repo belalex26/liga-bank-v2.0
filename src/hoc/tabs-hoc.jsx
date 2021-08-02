@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 
 const TabsHoc = (Component) => {
     
@@ -12,5 +13,10 @@ const TabsHoc = (Component) => {
     }
     return TabsState;
 }
+
+TabsHoc.prototype = {
+    activeTabs: PropTypes.bool.isRequired,
+    onActiveTabs: PropTypes.func.isRequired,
+};
 
 export default TabsHoc

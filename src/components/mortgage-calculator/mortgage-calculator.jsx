@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Rejection from '../rejection/rejection';
 import Proposal from '../proposal/proposal';
@@ -107,5 +108,19 @@ const MortgageCalculator = ({...props}) => {
         </>
     );
   };
+
+  MortgageCalculator.prototype = {
+    target: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    credit: PropTypes.number.isRequired,
+    deposit: PropTypes.number.isRequired,
+    contribution: PropTypes.number.isRequired,
+    time: PropTypes.string.isRequired,
+    questionnaireActive: PropTypes.bool.isRequired,
+    onQuestionnaireActive: PropTypes.func.isRequired,
+    counter: PropTypes.number.isRequired, 
+    onCounter: PropTypes.func.isRequired,
+  };
+  
   
   export default MortgageCalculator;

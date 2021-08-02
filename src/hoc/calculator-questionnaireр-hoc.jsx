@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import PropTypes from 'prop-types';
 
 const applications = [];
 
@@ -47,5 +48,23 @@ const CalculatorQuestionnaireHoc = (Component) => {
     }
     return CalculatorQuestionnaireState;
 }
+
+CalculatorQuestionnaireHoc.prototype = {
+    successActive: PropTypes.bool.isRequired,
+    onSuccessActive: PropTypes.func.isRequired,
+    counter: PropTypes.number.isRequired, 
+    onCounter: PropTypes.func.isRequired,
+    time: PropTypes.string.isRequired,
+    target: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    applicationItems: PropTypes.object.isRequired,
+    onApplicationItems: PropTypes.func.isRequired,
+    fullName: PropTypes.string.isRequired,
+    onFullName: PropTypes.func.isRequired,
+    phone: PropTypes.string.isRequired,
+    onPhone: PropTypes.func.isRequired,
+    email: PropTypes.string.isRequired,
+    onEmail: PropTypes.func.isRequired,
+  };
 
 export default CalculatorQuestionnaireHoc;

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 
 const MainHoc = (Component) => {
     
@@ -24,5 +25,10 @@ const MainHoc = (Component) => {
     }
     return MainState;
 }
+
+MainHoc.prototype = {
+    width: PropTypes.number.isRequired,
+    onWidth: PropTypes.func.isRequired,
+  };
 
 export default MainHoc

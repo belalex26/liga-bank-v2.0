@@ -1,11 +1,11 @@
 import React from 'react';
 import InputMask from "react-input-mask";
+import PropTypes from 'prop-types';
 
 import Success from '../success/success';
 import CalculatorQuestionnaireHoc from '../../hoc/calculator-questionnaireр-hoc';
 
 const CalculatorQuestionnaire = ({...props}) => {
-  console.log(props.target)
 
   const renderTarget = () => {
     if (props.target === 'Ипотечное кредитование') {
@@ -50,7 +50,6 @@ const onAddItemClick = () => {
     props.onApplicationItems([...props.applicationItems, newApplication])
 
     resetInput()
-  
 }
 
 const resetInput = () => {
@@ -125,5 +124,10 @@ const resetInput = () => {
       </>
     );
   };
-  
+
+  CalculatorQuestionnaire.prototype = {
+    successActive: PropTypes.bool.isRequired,
+    onSuccessActive: PropTypes.func.isRequired,
+};
+
   export default CalculatorQuestionnaireHoc(CalculatorQuestionnaire);

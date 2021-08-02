@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Rejection from '../rejection/rejection';
 import Proposal from '../proposal/proposal';
@@ -120,5 +121,17 @@ const AutoCalculator = ({...props}) => {
         </>
     );
   };
+
+AutoCalculator.prototype = {
+    target: PropTypes.string.isRequired,
+    credit: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
+    time: PropTypes.string.isRequired,
+    deposit: PropTypes.number.isRequired,
+    questionnaireActive: PropTypes.bool.isRequired,
+    onQuestionnaireActive: PropTypes.func.isRequired,
+    counter: PropTypes.number.isRequired,
+    onCounter: PropTypes.func.isRequired,
+};
   
   export default AutoCalculator;

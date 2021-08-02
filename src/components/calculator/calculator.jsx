@@ -1,8 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import MortgageCalculator from '../mortgage-calculator/mortgage-calculator'
 import AutoCalculator from '../auto-calculator/auto-calculator'
-
 import CalculatorHoc from '../../hoc/calculator-hoc'
 
 const Calculator = ({...props}) => {
@@ -91,6 +91,22 @@ const Calculator = ({...props}) => {
       </form>
     </section>
   );
+};
+
+Calculator.prototype = {
+  target: PropTypes.string.isRequired,
+  price: PropTypes.string.isRequired,
+  deposit: PropTypes.number.isRequired,
+  contribution: PropTypes.number.isRequired,
+  onContribution: PropTypes.func.isRequired,
+  time: PropTypes.string.isRequired,
+  onTime: PropTypes.func.isRequired,
+  questionnaireActive: PropTypes.bool.isRequired,
+  onQuestionnaireActive: PropTypes.func.isRequired,
+  counter: PropTypes.number.isRequired, 
+  onCounter: PropTypes.func.isRequired,
+  errors: PropTypes.bool.isRequired,
+  onErrors: PropTypes.func.isRequired,
 };
 
 export default CalculatorHoc(Calculator);

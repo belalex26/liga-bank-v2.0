@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 
 const CalculatorHoc = (Component) => {
     
@@ -44,5 +45,25 @@ const CalculatorHoc = (Component) => {
     }
     return CalculatorState;
 }
+
+
+CalculatorHoc.prototype = {
+    target: PropTypes.string.isRequired,
+    onTarget: PropTypes.func.isRequired,
+    price: PropTypes.string.isRequired,
+    onPrice: PropTypes.func.isRequired,
+    deposit: PropTypes.number.isRequired,
+    onDeposit: PropTypes.func.isRequired,
+    contribution: PropTypes.number.isRequired,
+    onContribution: PropTypes.func.isRequired,
+    time: PropTypes.string.isRequired,
+    onTime: PropTypes.func.isRequired,
+    questionnaireActive: PropTypes.bool.isRequired,
+    onQuestionnaireActive: PropTypes.func.isRequired,
+    counter: PropTypes.number.isRequired, 
+    onCounter: PropTypes.func.isRequired,
+    errors: PropTypes.bool.isRequired,
+    onErrors: PropTypes.func.isRequired,
+  };
 
 export default CalculatorHoc

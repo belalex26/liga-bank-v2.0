@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Logo from '../logo/logo';
 import Modal from '../modal/modal';
@@ -14,13 +15,13 @@ const Menu = ({...props}) => {
   return (
     <>
       <nav className={props.menuActive ? "menu menu--active" : "menu"} >
-        <button className="menu__button" aria-label="меню" onClick={() => props.setMenuActive(!props.menuActive)}>
+        <button className="menu__button" aria-label="меню" onClick={() => props.onMenuActive(!props.menuActive)}>
           <span className="menu__button-icon"></span>
         </button>
           <div className="menu__logo">
             <Logo />
           </div>
-          <ul className="menu__list" onClick={() => props.setMenuActive(false)}>
+          <ul className="menu__list" onClick={() => props.onMenuActive(false)}>
             <li className="menu__item">
               <a className="menu__link" href="#services">
                 Услуги
@@ -60,6 +61,11 @@ const Menu = ({...props}) => {
       <Modal modalActive={props.modalActive} onModalActive={props.onModalActive} aria-hidden="true" />
     </>
   );
+};
+
+Menu.prototype = {
+  modalActive: PropTypes.bool.isRequired,
+  onModalActive: PropTypes.func.isRequired,
 };
 
 export default MenuHoc(Menu);

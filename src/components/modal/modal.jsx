@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-//import PropTypes from 'prop-types';
 import logoPops from '../../images/logo-pops.svg'
 import ModalHoc from '../../hoc/modal-hoc';
 import validate from '../../validateInfo/validateInfo-user';

@@ -1,6 +1,7 @@
 import React from 'react';
-import CalculatorQuestionnaire from '../calculator-questionnaire/calculator-questionnaire'
+import PropTypes from 'prop-types';
 
+import CalculatorQuestionnaire from '../calculator-questionnaire/calculator-questionnaire'
 
 const Proposal = ({...props}) => {
     const MATERNITY_CAPITAL = 470000
@@ -10,8 +11,6 @@ const Proposal = ({...props}) => {
     let interestRate = 0.00783
     let period = props.time*12
     let payment = 0
-
-    console.log(props.target)
 
     const renderPriceIfTagret = () => {
         if (props.target === 'Ипотечное кредитование') {
@@ -118,6 +117,18 @@ const Proposal = ({...props}) => {
             
       </>
   );
+};
+
+Proposal.prototype = {
+    target: PropTypes.string.isRequired,
+    credit: PropTypes.number.isRequired,
+    deposit: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
+    time: PropTypes.string.isRequired,
+    questionnaireActive: PropTypes.bool.isRequired,
+    onQuestionnaireActive: PropTypes.func.isRequired,
+    counter: PropTypes.number.isRequired,
+    onCounter: PropTypes.func.isRequired,
 };
 
 export default Proposal;
