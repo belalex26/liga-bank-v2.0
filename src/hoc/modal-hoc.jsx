@@ -14,7 +14,6 @@ const ModalHoc = (Component) => {
 
         const [visiblePassword, setVisiblePassword] = useState(false)
         const [errors, setErrors] = useState({});
-        const [formValid, setFormValid] = useState(false);
 
         useEffect(() => {
             setUserItems(users);
