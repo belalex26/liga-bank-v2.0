@@ -76,11 +76,11 @@ const MortgageCalculator = ({...props}) => {
                     <p className="calculator__form-text">От 1 200 000  до 25 000 000 рублей</p>
                 </div>
 
-                <label className="calculator__form-label calculator__form-label--deposit">
+                <label className="calculator__form-label calculator__form-label--deposit">Первоначальный взнос
                     <input className="calculator__form-input" type="number" name="deposit" value={deposit} onChange={((evt) => props.onPrice(evt.target.value))} placeholder="120 000 рублей"/>
                 </label>
 
-                <label className="calculator__form-label calculator__form-label--contribution">Первоначальный взнос
+                <label className="calculator__form-label calculator__form-label--contribution">
                     <input className="calculator__form-range" type="range" name="contribution" min="10" step='5' value={props.contribution} onChange={((evt) => props.onContribution(evt.target.value))} />
                     <span className="calculator__form-text">10%</span>
                 </label>
@@ -92,6 +92,7 @@ const MortgageCalculator = ({...props}) => {
                 <label className="calculator__form-label calculator__form-label--time-range">
                     <input className="calculator__form-range" type="range" name="time" min="5" max="30" step="1" defaultValue={1} value={props.time} onChange={((evt) => props.onTime(evt.target.value))} />
                 </label>
+                
                 <div className="calculator__form-desc">
                     <p className="calculator__form-text">5 лет</p>
                     <p className="calculator__form-text">30 лет</p>

@@ -84,11 +84,11 @@ const AutoCalculator = ({...props}) => {
                     <p className="calculator__form-text">От 500 000  до 5 000 000 рублей</p>   
                 </div>
 
-                <label className="calculator__form-label calculator__form-label--deposit">
+                <label className="calculator__form-label calculator__form-label--deposit">Первоначальный взнос
                     <input className="calculator__form-input" type="number" value={depositValue} onChange={((evt) => props.onContribution(evt.target.value))} placeholder="240 000 рублей"/>
                 </label>
             
-                <label className="calculator__form-label calculator__form-label--contribution">Первоначальный взнос
+                <label className="calculator__form-label calculator__form-label--contribution">
                     <input className="calculator__form-range" type="range" name="contribution" min='20' step='5' value={contribution} onChange={((evt) => props.onContribution(evt.target.value))}  />
                     <span className="calculator__form-text">20%</span>
                 </label>

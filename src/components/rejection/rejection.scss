@@ -27,16 +27,20 @@
     margin-top: 56px;
     padding-left: 11%;
     margin-bottom: 0px;
+    font-weight: bold;
 
     @media screen and (max-width: 1023px) {
         padding-left: 9%;
         padding-top: 55px;
+        margin-top: 70px;
     }
 
     @media screen and (max-width: 767px) {
         font-size: 18px;
         padding-left: 2.5%;
         margin-top: 46px;
+        margin-left: 3%;
+        width: 85%;
 
     }
 }
