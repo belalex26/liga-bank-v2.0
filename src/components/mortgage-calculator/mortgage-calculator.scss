@@ -251,17 +251,13 @@
 
 .calculator__form-error {
     position: absolute;
-    top: 17px;
+    top: 35px;
     left: 7px;
     padding: 5px;
     background: #ffffff;
     color: #D12136;
     font-size: 14px;
     font-weight: 600;
-
-    @media screen and (max-width: 1023px) {
-        top: 35px;
-    }
 }
 
 .calculator__form-error + .calculator__form-input {

@@ -28,13 +28,13 @@ const CalculatorQuestionnaire = ({...props}) => {
       return(
         props.time + ' год'
       )
-    } else if ( '1' < props.time < '4') {
+    } else if (props.time >= '5') {
       return(
-        props.time + ' года'
+        props.time + ' лет'
       )
     } else {
       return(
-        props.time + ' лет'
+        props.time + ' года'
       )
     }
   }
