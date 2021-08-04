@@ -1,134 +1,138 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import CalculatorQuestionnaire from '../calculator-questionnaire/calculator-questionnaire'
+import CalculatorQuestionnaire from '../calculator-questionnaire/calculator-questionnaire';
 
 const Proposal = ({...props}) => {
-    const MATERNITY_CAPITAL = 470000
-    const PERSENT_LIMIT = 15
-    let credit = props.credit
-    let percent = 9.40
-    let interestRate = 0.00783
-    let period = props.time*12
-    let payment = 0
+  const MATERNITY_CAPITAL = 470000;
+  const PERSENT_LIMIT = 15;
+  let credit = props.credit;
+  let percent = 9.40;
+  let interestRate = 0.00783;
+  let period = props.time * 12;
+  let payment = 0;
 
-    const renderPriceIfTagret = () => {
-        if (props.target === 'Ипотечное кредитование') {
-          return('Сумма ипотеки')
-        } else {
-          return('Сумма автокредита')
-        }
-      }
-
-    const getRenderPrice = () => {
-
-        if (props.target === 'Ипотечное кредитование') {
-        
-            if (props.capital === true) {
-                return(
-                    credit = credit - MATERNITY_CAPITAL
-                )
-            } else {
-                return(
-                    credit
-                )
-            }
-        }  else {
-            return(
-                credit
-            )
-        }  
-    }
-
-    if (props.target === 'Ипотечное кредитование') {
-
-        if (props.contribution >= PERSENT_LIMIT) {
-            percent = 8.50
-        }
+  const renderPriceIfTagret = () => {
+    if (props.target === `Ипотечное кредитование`) {
+      return (`Сумма ипотеки`);
     } else {
-
-        if (props.lifeInsurance === true && props.carInsurance === true) {
-            percent = 3.5
-        } else if (props.lifeInsurance === true || props.carInsurance === true) {
-            percent = 8.5
-        } else if (props.credit >= 2000000 ) {
-            percent = 15
-        } else {
-            percent = 16
-        }
+      return (`Сумма автокредита`);
     }
+  };
 
-    interestRate = (percent*0.01)/12
-      
-    const getRenderPayment = () => {
-        let priseCost = (1+interestRate)^period
-        payment = Math.ceil(credit*(interestRate + (interestRate/(priseCost-1))))
+  const getRenderPrice = () => {
 
-        return(payment)
+    if (props.target === `Ипотечное кредитование`) {
+
+      if (props.capital === true) {
+        return (
+          credit = credit - MATERNITY_CAPITAL
+        );
+      } else {
+        return (
+          credit
+        );
+      }
+    } else {
+      return (
+        credit
+      );
     }
+  };
 
-    const getRenderProfit = () => {
-        let profit = Math.ceil((payment*100)/45)
-        return(profit)
-    }
+  if (props.target === `Ипотечное кредитование`) {
 
-    const onButtonClick = () => {
-        props.onQuestionnaireActive(true)
+    if (props.contribution >= PERSENT_LIMIT) {
+      percent = 8.50;
     }
+  } else {
+
+    if (props.lifeInsurance === true && props.carInsurance === true) {
+      percent = 3.5;
+    } else if (props.lifeInsurance === true || props.carInsurance === true) {
+      percent = 8.5;
+    } else if (props.credit >= 2000000) {
+      percent = 15;
+    } else {
+      percent = 16;
+    }
+  }
+
+  interestRate = (percent * 0.01) / 12;
+
+  const getRenderPayment = () => {
+    let priseCost = (1 + interestRate) ^ period;
+    payment = Math.ceil(credit * (interestRate + (interestRate / (priseCost - 1))));
+
+    return (payment);
+  };
+
+  const getRenderProfit = () => {
+    let profit = Math.ceil((payment * 100) / 45);
+    return (profit);
+  };
+
+  const onButtonClick = () => {
+    props.onQuestionnaireActive(true);
+  };
 
   return (
-      <>
-        <div className="proposal">
-            <p className="proposal__title">Наше предложение</p>
-            <ul className="proposal__content">
-                <li className="proposal__content-item">
-                    <p className="proposal__content-value">{`${getRenderPrice()} рублей`}</p>
-                    <p className="proposal__content-desc">{renderPriceIfTagret()}</p>
-                </li>
+    <>
+      <div className="proposal">
+        <p className="proposal__title">Наше предложение</p>
+        <ul className="proposal__content">
+          <li className="proposal__content-item">
+            <p className="proposal__content-value">{`${getRenderPrice()} рублей`}</p>
+            <p className="proposal__content-desc">{renderPriceIfTagret()}</p>
+          </li>
 
-                <li className="proposal__content-item">
-                    <p className="proposal__content-value">{`${percent} %`}</p>
-                    <p className="proposal__content-desc">Процентная ставка</p>
-                </li>
+          <li className="proposal__content-item">
+            <p className="proposal__content-value">{`${percent} %`}</p>
+            <p className="proposal__content-desc">Процентная ставка</p>
+          </li>
 
-                <li className="proposal__content-item">
-                    <p className="proposal__content-value">{`${getRenderPayment()} рублей`}</p>
-                    <p className="proposal__content-desc">Ежемесячный платеж</p>
-                </li>
+          <li className="proposal__content-item">
+            <p className="proposal__content-value">{`${getRenderPayment()} рублей`}</p>
+            <p className="proposal__content-desc">Ежемесячный платеж</p>
+          </li>
 
-                <li className="proposal__content-item">
-                    <p className="proposal__content-value">{`${getRenderProfit()} рублей`}</p>
-                    <p className="proposal__content-desc">Необходимый доход</p>
-                </li>
-            </ul>
-            <button className="proposal__btn" type="button" onClick={onButtonClick}>Оформить заявку</button>
-        </div>
-        <CalculatorQuestionnaire
-            questionnaireActive={props.questionnaireActive}
-            onQuestionnaireActive={props.onQuestionnaireActive}
-            counter={props.counter}
-            onCounter={props.onCounter}
-            credit={credit}
-            price={props.price}
-            deposit={props.deposit}
-            time={props.time}
-            target={props.target}
-        />
-            
-      </>
+          <li className="proposal__content-item">
+            <p className="proposal__content-value">{`${getRenderProfit()} рублей`}</p>
+            <p className="proposal__content-desc">Необходимый доход</p>
+          </li>
+        </ul>
+        <button className="proposal__btn" type="button" onClick={onButtonClick}>Оформить заявку</button>
+      </div>
+      <CalculatorQuestionnaire
+        questionnaireActive={props.questionnaireActive}
+        onQuestionnaireActive={props.onQuestionnaireActive}
+        counter={props.counter}
+        onCounter={props.onCounter}
+        credit={credit}
+        price={props.price}
+        deposit={props.deposit}
+        time={props.time}
+        target={props.target}
+      />
+
+    </>
   );
 };
 
-Proposal.prototype = {
-    target: PropTypes.string.isRequired,
-    credit: PropTypes.number.isRequired,
-    deposit: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired,
-    time: PropTypes.string.isRequired,
-    questionnaireActive: PropTypes.bool.isRequired,
-    onQuestionnaireActive: PropTypes.func.isRequired,
-    counter: PropTypes.number.isRequired,
-    onCounter: PropTypes.func.isRequired,
+Proposal.propTypes = {
+  target: PropTypes.string.isRequired,
+  credit: PropTypes.number.isRequired,
+  deposit: PropTypes.number.isRequired,
+  price: PropTypes.number.isRequired,
+  time: PropTypes.string.isRequired,
+  contribution: PropTypes.number.isRequired,
+  lifeInsurance: PropTypes.object.isRequired,
+  carInsurance: PropTypes.object.isRequired,
+  capital: PropTypes.object.isRequired,
+  questionnaireActive: PropTypes.bool.isRequired,
+  onQuestionnaireActive: PropTypes.func.isRequired,
+  counter: PropTypes.number.isRequired,
+  onCounter: PropTypes.func.isRequired,
 };
 
 export default Proposal;

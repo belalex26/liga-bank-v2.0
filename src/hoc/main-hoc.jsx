@@ -1,34 +1,28 @@
 import React, {useState} from 'react';
-import PropTypes from 'prop-types';
 
 const MainHoc = (Component) => {
-    
-    const MainState = () => {
-        const [width, setWidth] = useState(window.innerWidth);
 
-        React.useEffect(() => {
-            const handleResizeWindow = () => setWidth(window.innerWidth);
-      
-             window.addEventListener("resize", handleResizeWindow);
-             return () => {
-               window.removeEventListener("resize", handleResizeWindow);
-             };
-           }, []);
+  const MainState = () => {
+    const [width, setWidth] = useState(window.innerWidth);
+
+    React.useEffect(() => {
+      const handleResizeWindow = () => setWidth(window.innerWidth);
+
+      window.addEventListener(`resize`, handleResizeWindow);
+      return () => {
+        window.removeEventListener(`resize`, handleResizeWindow);
+      };
+    }, []);
 
 
-        return (
-            <Component
-                width={width} onWidth={setWidth}
-            />
-        );
-    
-    }
-    return MainState;
-}
+    return (
+      <Component
+        width={width} onWidth={setWidth}
+      />
+    );
 
-MainHoc.prototype = {
-    width: PropTypes.number.isRequired,
-    onWidth: PropTypes.func.isRequired,
   };
+  return MainState;
+};
 
-export default MainHoc
+export default MainHoc;

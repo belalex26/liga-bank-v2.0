@@ -2,21 +2,21 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
 const TabsHoc = (Component) => {
-    
-    const TabsState = () => {
-        const [activeTabs, setActiveTabs] = useState(1);
 
-        return (
-            <Component activeTabs={activeTabs} onActiveTabs={setActiveTabs}/>
-        );
-    
-    }
-    return TabsState;
-}
+  const TabsState = () => {
+    const [activeTabs, setActiveTabs] = useState(1);
 
-TabsHoc.prototype = {
-    activeTabs: PropTypes.bool.isRequired,
-    onActiveTabs: PropTypes.func.isRequired,
+    return (
+      <Component activeTabs={activeTabs} onActiveTabs={setActiveTabs}/>
+    );
+
+  };
+  return TabsState;
 };
 
-export default TabsHoc
+TabsHoc.prototype = {
+  activeTabs: PropTypes.bool.isRequired,
+  onActiveTabs: PropTypes.func.isRequired,
+};
+
+export default TabsHoc;
