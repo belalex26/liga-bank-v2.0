@@ -15,29 +15,28 @@ const Proposal = ({...props}) => {
   const renderPriceIfTagret = () => {
     if (props.target === `Ипотечное кредитование`) {
       return (`Сумма ипотеки`);
-    } else {
-      return (`Сумма автокредита`);
     }
+    return (`Сумма автокредита`);
   };
 
   const getRenderPrice = () => {
 
     if (props.target === `Ипотечное кредитование`) {
 
-      if (props.capital === true) {
+      if (props.capital) {
         return (
           credit = credit - MATERNITY_CAPITAL
         );
-      } else {
-        return (
-          credit
-        );
       }
-    } else {
       return (
         credit
       );
+
     }
+    return (
+      credit
+    );
+
   };
 
   if (props.target === `Ипотечное кредитование`) {
@@ -126,9 +125,9 @@ Proposal.propTypes = {
   price: PropTypes.number.isRequired,
   time: PropTypes.string.isRequired,
   contribution: PropTypes.number.isRequired,
-  lifeInsurance: PropTypes.object.isRequired,
-  carInsurance: PropTypes.object.isRequired,
-  capital: PropTypes.object.isRequired,
+  lifeInsurance: PropTypes.bool.isRequired,
+  carInsurance: PropTypes.bool.isRequired,
+  capital: PropTypes.bool.isRequired,
   questionnaireActive: PropTypes.bool.isRequired,
   onQuestionnaireActive: PropTypes.func.isRequired,
   counter: PropTypes.number.isRequired,

@@ -11,7 +11,7 @@ const Credit = () => {
           <li className="credit__item">Потребительский кредит</li>
         </ul>
         <p className="credit__text">Рассчитайте ежемесячный платеж и ставку по кредиту воспользовавшись нашим
-          <a className="credit__link" href="#credit">кредитным калькулятором</a>
+          <a className="credit__link" href="/#credit">кредитным калькулятором</a>
         </p>
       </div>
     </div>

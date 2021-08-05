@@ -23,12 +23,12 @@ const Menu = ({...props}) => {
         </div>
         <ul className="menu__list" onClick={() => props.onMenuActive(false)}>
           <li className="menu__item">
-            <a className="menu__link" href="#services">
+            <a className="menu__link" href="/#services">
                 Услуги
             </a>
           </li>
           <li className="menu__item">
-            <a className="menu__link" href="#credit">
+            <a className="menu__link" href="/#credit">
                 Рассчитать кредит
             </a>
           </li>
@@ -38,7 +38,7 @@ const Menu = ({...props}) => {
             </Link>
           </li>
           <li className="menu__item">
-            <a className="menu__link" href="#department">
+            <a className="menu__link" href="/#department">
                 Контакты
             </a>
           </li>

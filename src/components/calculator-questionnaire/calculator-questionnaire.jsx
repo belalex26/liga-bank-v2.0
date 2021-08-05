@@ -1,5 +1,5 @@
 import React from 'react';
-import InputMask from "react-input-mask";
+import InputMask from 'react-input-mask';
 import PropTypes from 'prop-types';
 
 import Success from '../success/success';
@@ -10,17 +10,15 @@ const CalculatorQuestionnaire = ({...props}) => {
   const renderTarget = () => {
     if (props.target === `Ипотечное кредитование`) {
       return (`Ипотека`);
-    } else {
-      return (`Автокредит`);
     }
+    return (`Автокредит`);
   };
 
   const renderPriceIfTagret = () => {
     if (props.target === `Ипотечное кредитование`) {
       return (`Стоимость недвижимости`);
-    } else {
-      return (`Стоимость автомобиля`);
     }
+    return (`Стоимость автомобиля`);
   };
 
   const renderTime = () => {
@@ -32,11 +30,10 @@ const CalculatorQuestionnaire = ({...props}) => {
       return (
         props.time + ` лет`
       );
-    } else {
-      return (
-        props.time + ` года`
-      );
     }
+    return (
+      props.time + ` года`
+    );
   };
 
   const onAddItemClick = () => {

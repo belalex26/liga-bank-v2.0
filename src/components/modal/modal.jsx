@@ -16,11 +16,10 @@ const Modal = (props) => {
   });
 
   const bodyScroll = () => {
-    if (props.onModalActive === true) {
+    if (props.onModalActive) {
       body.style.overflow = `hidden`;
-    } else {
-      body.style.overflow = `auto`;
     }
+    body.style.overflow = `auto`;
   };
 
   const onClose = (evt) => {

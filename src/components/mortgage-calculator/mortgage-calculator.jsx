@@ -6,32 +6,37 @@ import Proposal from '../proposal/proposal';
 
 const MortgageCalculator = ({...props}) => {
 
+  const MAX_PRICE = 25000000;
+  const STEP_PRISE = 100000;
+  const REJECTION_PRICE = 500000;
+  const PRICE_VALID = 1200000;
+
   let price = parseFloat(props.price);
   let deposit = Math.round(price * (props.contribution / 100));
   let credit = price - deposit;
 
-  if (price > 25000000) {
-    props.onPrice(25000000);
+  if (price > MAX_PRICE) {
+    props.onPrice(MAX_PRICE);
   }
 
   const onButtonMinusClick = () => {
-    if (price > 100000) {
-      props.onPrice(price - 100000);
+    if (price > STEP_PRISE) {
+      props.onPrice(price - STEP_PRISE);
     }
   };
 
   const onButtonPlusClick = () => {
-    if (price < 25000000) {
-      props.onPrice((price + 100000));
+    if (price < MAX_PRICE) {
+      props.onPrice((price + STEP_PRISE));
     }
   };
 
   const onPriceValid = () => {
-    if (price < 1200000) {
+    if (price < PRICE_VALID) {
       return (
         <span className="calculator__form-error">Некорректное значение</span>
       );
-    } else if (price > 25000000) {
+    } else if (price > MAX_PRICE) {
       return (
         <span className="calculator__form-error">Некорректное значение</span>
       );
@@ -41,25 +46,24 @@ const MortgageCalculator = ({...props}) => {
 
   const renderProposal = () => {
     if (props.price && props.time) {
-      if (credit < 500000) {
+      if (credit < REJECTION_PRICE) {
         return (
           <Rejection target={props.target}/>
         );
-      } else {
-        return (
-          <Proposal
-            contribution={props.contribution}
-            target={props.target}
-            credit={credit}
-            price={props.price}
-            time={props.time}
-            capital={props.capital}
-            deposit={deposit}
-            questionnaireActive={props.questionnaireActive} onQuestionnaireActive={props.onQuestionnaireActive}
-            counter={props.counter} onCounter={props.onCounter}
-          />
-        );
       }
+      return (
+        <Proposal
+          contribution={props.contribution}
+          target={props.target}
+          credit={credit}
+          price={props.price}
+          time={props.time}
+          capital={props.capital}
+          deposit={deposit}
+          questionnaireActive={props.questionnaireActive} onQuestionnaireActive={props.onQuestionnaireActive}
+          counter={props.counter} onCounter={props.onCounter}
+        />
+      );
     }
     return (``);
   };
@@ -117,7 +121,7 @@ MortgageCalculator.propTypes = {
   onPrice: PropTypes.func.isRequired,
   credit: PropTypes.number.isRequired,
   deposit: PropTypes.number.isRequired,
-  capital: PropTypes.number.isRequired,
+  capital: PropTypes.bool.isRequired,
   onCapital: PropTypes.func.isRequired,
   contribution: PropTypes.number.isRequired,
   onContribution: PropTypes.func.isRequired,

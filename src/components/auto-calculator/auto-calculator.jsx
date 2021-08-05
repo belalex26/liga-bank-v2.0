@@ -7,6 +7,11 @@ import Proposal from '../proposal/proposal';
 
 const AutoCalculator = ({...props}) => {
 
+  const MAX_PRICE = 5000000;
+  const STEP_PRISE = 50000;
+  const REJECTION_PRICE = 200000;
+  const PRICE_VALID = 500000;
+
   let price = parseFloat(props.price);
   let deposit = (Math.round(price * (props.contribution / 100)));
   let contribution = (deposit / price) * 100;
@@ -14,28 +19,28 @@ const AutoCalculator = ({...props}) => {
 
   let depositValue = deposit.toString();
 
-  if (price > 5000000) {
-    props.onPrice(5000000);
+  if (price > MAX_PRICE) {
+    props.onPrice(MAX_PRICE);
   }
 
   const onButtonMinusClick = () => {
-    if (price > 50000) {
-      props.onPrice(price - 50000);
+    if (price > STEP_PRISE) {
+      props.onPrice(price - STEP_PRISE);
     }
   };
 
   const onButtonPlusClick = () => {
-    if (price < 5000000) {
-      props.onPrice((price + 50000));
+    if (price < MAX_PRICE) {
+      props.onPrice((price + STEP_PRISE));
     }
   };
 
   const onPriceValid = () => {
-    if (price < 500000) {
+    if (price < PRICE_VALID) {
       return (
         <span className="calculator__form-error">Некорректное значение</span>
       );
-    } else if (price > 5000000) {
+    } else if (price > MAX_PRICE) {
       return (
         <span className="calculator__form-error">Некорректное значение</span>
       );
@@ -47,27 +52,26 @@ const AutoCalculator = ({...props}) => {
 
     if (props.price && props.time) {
 
-      if (credit < 200000) {
+      if (credit < REJECTION_PRICE) {
         return (
           <Rejection target={props.target}/>
         );
-      } else {
-        return (
-          <Proposal
-            target={props.target}
-            credit={credit}
-            price={props.price}
-            time={props.time}
-            deposit={deposit}
-            lifeInsurance={props.lifeInsurance}
-            carInsurance={props.carInsurance}
-            questionnaireActive={props.questionnaireActive}
-            onQuestionnaireActive={props.onQuestionnaireActive}
-            counter={props.counter}
-            onCounter={props.onCounter}
-          />
-        );
       }
+      return (
+        <Proposal
+          target={props.target}
+          credit={credit}
+          price={props.price}
+          time={props.time}
+          deposit={deposit}
+          lifeInsurance={props.lifeInsurance}
+          carInsurance={props.carInsurance}
+          questionnaireActive={props.questionnaireActive}
+          onQuestionnaireActive={props.onQuestionnaireActive}
+          counter={props.counter}
+          onCounter={props.onCounter}
+        />
+      );
     }
     return (``);
   };
@@ -138,9 +142,9 @@ AutoCalculator.propTypes = {
   onQuestionnaireActive: PropTypes.func.isRequired,
   counter: PropTypes.number.isRequired,
   onCounter: PropTypes.func.isRequired,
-  lifeInsurance: PropTypes.object.isRequired,
+  lifeInsurance: PropTypes.bool.isRequired,
   onLifeInsurance: PropTypes.func.isRequired,
-  carInsurance: PropTypes.object.isRequired,
+  carInsurance: PropTypes.bool.isRequired,
   onCarInsurance: PropTypes.func.isRequired
 };
 

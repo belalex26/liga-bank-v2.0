@@ -44,7 +44,7 @@ const Tabs = ({...props}) => {
 };
 
 Tabs.propTypes = {
-  activeTabs: PropTypes.bool.isRequired,
+  activeTabs: PropTypes.number.isRequired,
   onActiveTabs: PropTypes.func.isRequired,
 };
 

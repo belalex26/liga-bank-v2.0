@@ -266,7 +266,7 @@
     }
 }
 
-.fooler__socials {
+.footer__socials {
     width: 14.5%;
     padding-left: 0;
 
@@ -281,4 +281,31 @@
         padding-left: 7%;
         margin-top: -3px;
     }
+}
+
+.footer__socials-bar {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 0;
+    margin-left: -15px;
+    margin-top: 10px;
+    margin-right: 4px;
+}
+
+.footer__socials-link {
+    text-decoration: none;
+    display: block;
+    position: relative;
+}
+
+.footer__socials-icon {
+    fill: #1F1E25;
+}
+
+.footer__socials-link:hover > .footer__socials-icon,
+.footer__socials-link:active > .footer__socials-icon,
+.footer__socials-link:focus > .footer__socials-icon {
+    outline: none;
+    fill: #2C36F2;
 }

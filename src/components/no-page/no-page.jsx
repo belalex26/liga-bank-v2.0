@@ -7,8 +7,10 @@ const NoPage = () => {
   return (
     <>
       <Header />
-      <main className="no-page__content">
-        <h1 className="no-page__title">404 Упс, похоже, такой страницы нет</h1>
+      <main className="main">
+        <div className="no-page__content">
+          <h1 className="no-page__title">404 Упс, похоже, такой страницы нет</h1>
+        </div>
       </main>
       <Footer />
     </>

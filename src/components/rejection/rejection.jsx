@@ -7,9 +7,8 @@ const Rejection = ({...props}) => {
   const renderTarget = () => {
     if (props.target === `Ипотечное кредитование`) {
       return (`ипотечные кредиты`);
-    } else {
-      return (`автомобильные кредиты`);
     }
+    return (`автомобильные кредиты`);
   };
 
   return (

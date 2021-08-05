@@ -19,11 +19,10 @@ const Main = ({...props}) => {
       return (
         <ServicesSlider />
       );
-    } else {
-      return (
-        <Tabs />
-      );
     }
+    return (
+      <Tabs />
+    );
   };
 
   return (
@@ -33,7 +32,7 @@ const Main = ({...props}) => {
         <h1 className="main__title visually-hidden">Лига Банк</h1>
 
         <Slider
-          width={props.width} breakpoint={BREAKPOINT}
+          width={props.width}
         />
         {onRenderIfBreakoint()}
         <Calculator />
@@ -47,8 +46,7 @@ const Main = ({...props}) => {
 };
 
 Main.propTypes = {
-  breakpoint: PropTypes.number.isRequired,
-  width: PropTypes.number.isRequired,
+  width: PropTypes.number,
 };
 
 export default mainHoc(Main);

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import MortgageCalculator from '../mortgage-calculator/mortgage-calculator';
 import AutoCalculator from '../auto-calculator/auto-calculator';
-import CalculatorHoc from '../../hoc/calculator-hoc';
+import calculatorHoc from '../../hoc/calculator-hoc';
 
 const Calculator = ({...props}) => {
 
@@ -95,7 +95,7 @@ Calculator.propTypes = {
   onTarget: PropTypes.func.isRequired,
   price: PropTypes.string.isRequired,
   onPrice: PropTypes.func.isRequired,
-  deposit: PropTypes.number.isRequired,
+  deposit: PropTypes.string.isRequired,
   onDeposit: PropTypes.func.isRequired,
   contribution: PropTypes.number.isRequired,
   onContribution: PropTypes.func.isRequired,
@@ -105,17 +105,16 @@ Calculator.propTypes = {
   onQuestionnaireActive: PropTypes.func.isRequired,
   counter: PropTypes.number.isRequired,
   onCounter: PropTypes.func.isRequired,
-  errors: PropTypes.bool.isRequired,
+  errors: PropTypes.object.isRequired,
   onErrors: PropTypes.func.isRequired,
   selectActive: PropTypes.bool.isRequired,
   onSelectActive: PropTypes.func.isRequired,
-  capital: PropTypes.object.isRequired,
+  capital: PropTypes.bool.isRequired,
   onCapital: PropTypes.func.isRequired,
-  lifeInsurance: PropTypes.object.isRequired,
+  lifeInsurance: PropTypes.bool.isRequired,
   onLifeInsurance: PropTypes.func.isRequired,
-  carInsurance: PropTypes.object.isRequired,
+  carInsurance: PropTypes.bool.isRequired,
   onCarInsurance: PropTypes.func.isRequired,
 };
 
-// eslint-disable-next-line new-cap
-export default CalculatorHoc(Calculator);
+export default calculatorHoc(Calculator);
