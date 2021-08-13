@@ -10,6 +10,8 @@ const MortgageCalculator = ({...props}) => {
   const STEP_PRISE = 100000;
   const REJECTION_PRICE = 500000;
   const PRICE_VALID = 1200000;
+  const MIN_TIME = 5;
+  const MAX_TIME = 30;
 
   let price = parseFloat(props.price);
   let deposit = Math.round(price * (props.contribution / 100));
@@ -42,6 +44,21 @@ const MortgageCalculator = ({...props}) => {
       );
     }
     return (``);
+  };
+
+  const onTimeValid = () => {
+    if (props.time < MIN_TIME) {
+      return (
+        props.onTime(1)
+      );
+    } else if (props.time > MAX_TIME) {
+      return (
+        props.onTime(5)
+      );
+    }
+    return (
+      props.time
+    );
   };
 
   const renderProposal = () => {
@@ -93,11 +110,11 @@ const MortgageCalculator = ({...props}) => {
         </label>
 
         <label className="calculator__form-label calculator__form-label--time">Срок кредитования
-          <input className="calculator__form-input" type="number" value={props.time} onChange={((evt) => props.onTime(evt.target.value))} placeholder="5 лет"/>
+          <input className="calculator__form-input" type="number" value={onTimeValid()} onChange={((evt) => props.onTime(evt.target.value))} placeholder="5 лет"/>
         </label>
 
         <label className="calculator__form-label calculator__form-label--time-range">
-          <input className="calculator__form-range" type="range" name="time" min="5" max="30" step="1" defaultValue={1} value={props.time} onChange={((evt) => props.onTime(evt.target.value))} />
+          <input className="calculator__form-range" type="range" name="time" min="5" max="30" step="1" value={onTimeValid()} onChange={((evt) => props.onTime(evt.target.value))} />
         </label>
 
         <div className="calculator__form-desc">

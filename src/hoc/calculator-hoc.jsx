@@ -9,11 +9,11 @@ const CalculatorHoc = (Component) => {
     const [selectActive, setSelectActive] = useState(false);
 
     const [questionnaireActive, setQuestionnaireActive] = useState(false);
-
-    const [price, setPrice] = useState(``);
-    const [deposit, setDeposit] = useState(``);
-    const [contribution, setContribution] = useState(10);
-    const [time, setTime] = useState(``);
+    /*
+    const [price, setPrice] = useState();
+    const [deposit, setDeposit] = useState();
+    const [contribution, setContribution] = useState(20);
+    const [time, setTime] = useState([1, 5]);
     const [counter, setCounter] = useState(1);
     const [errors, setErrors] = useState({});
 
@@ -22,22 +22,12 @@ const CalculatorHoc = (Component) => {
     const [lifeInsurance, setLifeInsurance] = useState(true);
     const [carInsurance, setCarInsurance] = useState(true);
 
-
+*/
     return (
       <Component
         selectActive={selectActive} onSelectActive={setSelectActive}
         questionnaireActive={questionnaireActive} onQuestionnaireActive={setQuestionnaireActive}
         target={target} onTarget={setTarget}
-        price={price} onPrice={setPrice}
-        deposit={deposit} onDeposit={setDeposit}
-        contribution={contribution} onContribution={setContribution}
-        time={time} onTime={setTime}
-        capital={capital} onCapital={setCapital}
-        lifeInsurance={lifeInsurance} onLifeInsurance={setLifeInsurance}
-        carInsurance={carInsurance} onCarInsurance={setCarInsurance}
-        counter={counter} onCounter={setCounter}
-        errors={errors} onErrors={setErrors}
-
       />
     );
 

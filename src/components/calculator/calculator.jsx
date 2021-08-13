@@ -7,7 +7,7 @@ import calculatorHoc from '../../hoc/calculator-hoc';
 
 const Calculator = ({...props}) => {
 
-  const options = [`Ипотечное кредитование`, `Автомобильное кредитование`];
+  const options = [`Автомобильное кредитование`];
 
   const onSubmitForm = (evt) => {
     evt.preventDefault();
@@ -37,20 +37,7 @@ const Calculator = ({...props}) => {
       );
     } else if (props.target === `Автомобильное кредитование`) {
       return (
-        <>
-          <AutoCalculator
-            target={props.target}
-            price={props.price} onPrice={props.onPrice}
-            deposit={props.deposit} onDeposit={props.onDeposit}
-            contribution={props.contribution} onContribution={props.onContribution}
-            time={props.time} onTime={props.onTime}
-            lifeInsurance={props.lifeInsurance} onLifeInsurance={props.onLifeInsurance}
-            carInsurance={props.carInsurance} onCarInsurance={props.onCarInsurance}
-            questionnaireActive={props.questionnaireActive} onQuestionnaireActive={props.onQuestionnaireActive}
-            counter={props.counter} onCounter={props.onCounter}
-            errors={props.errors} onErrors={props.onErrors}
-          />
-        </>
+        <AutoCalculator/>
       );
     }
     return (``);
