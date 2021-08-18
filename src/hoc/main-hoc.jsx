@@ -6,11 +6,11 @@ const MainHoc = (Component) => {
     const [width, setWidth] = useState(window.innerWidth);
 
     React.useEffect(() => {
-      const handleResizeWindow = () => setWidth(window.innerWidth);
+      const windowResizeHandler = () => setWidth(window.innerWidth);
 
-      window.addEventListener(`resize`, handleResizeWindow);
+      window.addEventListener(`resize`, windowResizeHandler);
       return () => {
-        window.removeEventListener(`resize`, handleResizeWindow);
+        window.removeEventListener(`resize`, windowResizeHandler);
       };
     }, []);
 

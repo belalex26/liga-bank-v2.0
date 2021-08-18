@@ -12,7 +12,7 @@ const Success = ({...props}) => {
   });
 
   const bodyScroll = () => {
-    if (props.onModalActive) {
+    if (props.onSuccessActive) {
       body.style.overflow = `hidden`;
     }
     body.style.overflow = `auto`;
@@ -39,7 +39,6 @@ const Success = ({...props}) => {
 Success.propTypes = {
   successActive: PropTypes.bool.isRequired,
   onSuccessActive: PropTypes.func.isRequired,
-  onModalActive: PropTypes.func.isRequired,
 };
 
 export default Success;

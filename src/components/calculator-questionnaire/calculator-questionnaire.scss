@@ -157,28 +157,41 @@
 }
 
 .calculator-questionnaire__input--name {
-    width: 100%;
+    width: 630px;
     margin-bottom: 33px;
+
+    @media screen and (max-width: 1023px) {
+        width: 678px;
+    }
 
     @media screen and (max-width: 767px) {
         margin-bottom: 22px;
+        width: 290px;
     }
 }
 
 .calculator-questionnaire__input--phone {
-    width: 47.5%;
+    width: 300px;
+
+    @media screen and (max-width: 1023px) {
+        width: 324px;
+    }
 
     @media screen and (max-width: 767px) {
-        width: 100%;
         margin-bottom: 22px;
+        width: 290px;
     }
 }
 
 .calculator-questionnaire__input--email {
-    width: 47.5%;
+    width: 300px;
+
+    @media screen and (max-width: 1023px) {
+        width: 324px;
+    }
 
     @media screen and (max-width: 767px) {
-        width: 100%;
+        width: 290px;
     }
 }
 
@@ -248,6 +261,42 @@
     }
 }
 
+.calculator-questionnaire__container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    @media screen and (max-width: 767px) {
+        flex-direction: column;
+    }
+}
+
+.calculator-questionnaire__label {
+    position: relative;
+    display: block;
+}
+
 .calculator-questionnaire--active {
     display: flex;
+}
+
+.calculator-questionnaire__message {
+    display: none;
+}
+
+.calculator-questionnaire__error {
+    position: absolute;
+    color: #D12136;
+    font-size: 13px;
+    font-weight: 600;
+    top: 65px;
+    left: 0px;
+}
+
+.calculator-questionnaire__message.calculator-questionnaire__error {
+    display: block;
+}
+
+.calculator-questionnaire__error + .calculator-questionnaire__input {
+    border-color: #D12136;
 }

@@ -1,68 +1,98 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 
+import calculatorMortgageHoc from '../../hoc/calculator-mortgage-hoc';
 import Rejection from '../rejection/rejection';
 import Proposal from '../proposal/proposal';
 
 const MortgageCalculator = ({...props}) => {
 
-  const MAX_PRICE = 25000000;
-  const STEP_PRISE = 100000;
-  const REJECTION_PRICE = 500000;
-  const PRICE_VALID = 1200000;
   const MIN_TIME = 5;
   const MAX_TIME = 30;
+  const STEP_PRICE = 100000;
+  const PRICE_VALID_MIN = 1200000;
+  const PRICE_VALID_MAX = 25000000;
+  const MIN_CONTRIBUTION = 10;
+  const PERCENT = 100;
+  const REJECTION_PRICE = 500000;
 
-  let price = parseFloat(props.price);
-  let deposit = Math.round(price * (props.contribution / 100));
-  let credit = price - deposit;
+  let price = Number(props.price);
+  let time = Number(props.time);
+  let depositValue = Number(props.deposit);
+  let minDeposit = (price * MIN_CONTRIBUTION) / PERCENT;
+  let credit = price - depositValue;
 
-  if (price > MAX_PRICE) {
-    props.onPrice(MAX_PRICE);
-  }
+  useEffect(() => {
 
-  const onButtonMinusClick = () => {
-    if (price > STEP_PRISE) {
-      props.onPrice(price - STEP_PRISE);
+    if (!price) {
+      return (props.onDeposit(`120 000 рублей`));
     }
+    return (props.onDeposit(String((price * props.contribution) / PERCENT)));
+  }, [price, props.contribution]);
+
+  const onClickButtonPlus = () => {
+    price = price + STEP_PRICE;
+    props.onPrice(price);
   };
 
-  const onButtonPlusClick = () => {
-    if (price < MAX_PRICE) {
-      props.onPrice((price + STEP_PRISE));
-    }
+  const onClickButtonMinus = () => {
+    price = price - STEP_PRICE;
+    props.onPrice(price);
   };
 
-  const onPriceValid = () => {
-    if (price < PRICE_VALID) {
-      return (
-        <span className="calculator__form-error">Некорректное значение</span>
-      );
-    } else if (price > MAX_PRICE) {
-      return (
-        <span className="calculator__form-error">Некорректное значение</span>
-      );
+  const onValidPrice = () => {
+    if (price < PRICE_VALID_MIN) {
+      if (!price) {
+        return (``);
+      }
+      props.onError(true);
+      return (<span className="calculator__form-error">Некорректное значение</span>);
+    } else if (price > PRICE_VALID_MAX) {
+      props.onError(true);
+      return (<span className="calculator__form-error">Некорректное значение</span>);
+
     }
+    props.onError(false);
     return (``);
   };
 
-  const onTimeValid = () => {
-    if (props.time < MIN_TIME) {
-      return (
-        props.onTime(1)
-      );
-    } else if (props.time > MAX_TIME) {
-      return (
-        props.onTime(5)
-      );
+  const onDepositValid = () => {
+
+    onContributionRender();
+
+    if (depositValue < minDeposit) {
+      return (props.onDeposit(minDeposit));
     }
-    return (
-      props.time
-    );
+    return (props.deposit);
+  };
+
+  const onContributionRender = () => {
+
+    if (depositValue < minDeposit) {
+      return (props.onContribution(MIN_CONTRIBUTION));
+    }
+    return (props.onContribution(Math.ceil((props.deposit / price) * PERCENT)));
+  };
+
+  const onTimeValid = () => {
+    if (time < MIN_TIME) {
+      if (!props.time) {
+        return (`${props.time}`);
+      }
+      return (props.onTime(`${MIN_TIME}`));
+    } else if (time > MAX_TIME) {
+      if (!props.time) {
+        return (`${props.time}`);
+      }
+      return (props.onTime(`${MAX_TIME}`));
+    }
+    return (`${props.time}`);
   };
 
   const renderProposal = () => {
+
     if (props.price && props.time) {
+
       if (credit < REJECTION_PRICE) {
         return (
           <Rejection target={props.target}/>
@@ -70,15 +100,17 @@ const MortgageCalculator = ({...props}) => {
       }
       return (
         <Proposal
-          contribution={props.contribution}
           target={props.target}
           credit={credit}
-          price={props.price}
-          time={props.time}
+          price={price}
+          deposit={depositValue}
+          time={time}
+          contribution={props.contribution}
           capital={props.capital}
-          deposit={deposit}
-          questionnaireActive={props.questionnaireActive} onQuestionnaireActive={props.onQuestionnaireActive}
-          counter={props.counter} onCounter={props.onCounter}
+          questionnaireActive={props.questionnaireActive}
+          onQuestionnaireActive={props.onQuestionnaireActive}
+          counter={props.counter}
+          onCounter={props.onCounter}
         />
       );
     }
@@ -91,17 +123,17 @@ const MortgageCalculator = ({...props}) => {
         <legend className="calculator__form-title">Шаг 2. Введите параметры кредита</legend>
 
         <div className="calculator__form-price">
-          <button className="calculator__form-btn calculator__form-btn--minus" type="button" onClick={onButtonMinusClick}></button>
+          <button className="calculator__form-btn calculator__form-btn--minus" type="button" onClick={onClickButtonMinus}></button>
           <label className="calculator__form-label calculator__form-label--price">Стоимость недвижимости
-            {onPriceValid()}
-            <input className="calculator__form-input" type="text" name="price" value={props.price} onChange={((evt) => props.onPrice(evt.target.value))} placeholder="1 200 000 рублей" />
+            {onValidPrice()}
+            <input className="calculator__form-input" type="text" name="price" value={`${props.price}`} onChange={((evt) => props.onPrice(evt.target.value))} placeholder="1 200 000 рублей" />
           </label>
-          <button className="calculator__form-btn calculator__form-btn--plus" type="button" onClick={onButtonPlusClick}></button>
+          <button className="calculator__form-btn calculator__form-btn--plus" type="button" onClick={onClickButtonPlus}></button>
           <p className="calculator__form-text">От 1 200 000  до 25 000 000 рублей</p>
         </div>
 
         <label className="calculator__form-label calculator__form-label--deposit">Первоначальный взнос
-          <input className="calculator__form-input" type="number" name="deposit" value={deposit} onChange={((evt) => props.onPrice(evt.target.value))} placeholder="120 000 рублей"/>
+          <input className="calculator__form-input" type="number" name="deposit" value={props.deposit} onChange={((evt) => props.onDeposit(evt.target.value))} onBlur={onDepositValid} placeholder="120 000 рублей"/>
         </label>
 
         <label className="calculator__form-label calculator__form-label--contribution">
@@ -110,11 +142,11 @@ const MortgageCalculator = ({...props}) => {
         </label>
 
         <label className="calculator__form-label calculator__form-label--time">Срок кредитования
-          <input className="calculator__form-input" type="number" value={onTimeValid()} onChange={((evt) => props.onTime(evt.target.value))} placeholder="5 лет"/>
+          <input className="calculator__form-input" type="number" value={`${onTimeValid()}`} onChange={((evt) => props.onTime(evt.target.value))} placeholder="5 лет"/>
         </label>
 
         <label className="calculator__form-label calculator__form-label--time-range">
-          <input className="calculator__form-range" type="range" name="time" min="5" max="30" step="1" value={onTimeValid()} onChange={((evt) => props.onTime(evt.target.value))} />
+          <input className="calculator__form-range" type="range" name="time" min="5" max="30" step="1" value={`${onTimeValid()}`} onChange={((evt) => props.onTime(evt.target.value))} />
         </label>
 
         <div className="calculator__form-desc">
@@ -122,10 +154,12 @@ const MortgageCalculator = ({...props}) => {
           <p className="calculator__form-text">30 лет</p>
         </div>
 
-        <label className="calculator__form-label calculator__form-label--checkbox">
-          <input className="calculator__form-checkbox" type="checkbox" name="maternity capital" checked={props.capital} onChange={() => props.onCapital(!props.capital)}/>
-          <span className="calculator__form-checkbox-text">Использовать материнский капитал</span>
-        </label>
+        <div className="calculator__form-label-wrap">
+          <label className="calculator__form-label calculator__form-label--checkbox">
+            <input className="calculator__form-checkbox" type="checkbox" name="maternity capital" checked={props.capital} onChange={() => props.onCapital(!props.capital)}/>
+            <span className="calculator__form-checkbox-text">Использовать материнский капитал</span>
+          </label>
+        </div>
       </fieldset>
       {renderProposal()}
     </>
@@ -134,21 +168,24 @@ const MortgageCalculator = ({...props}) => {
 
 MortgageCalculator.propTypes = {
   target: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
+  credit: PropTypes.string,
+  price: PropTypes.string.isRequired,
   onPrice: PropTypes.func.isRequired,
-  credit: PropTypes.number.isRequired,
-  deposit: PropTypes.number.isRequired,
-  capital: PropTypes.bool.isRequired,
-  onCapital: PropTypes.func.isRequired,
-  contribution: PropTypes.number.isRequired,
-  onContribution: PropTypes.func.isRequired,
   time: PropTypes.string.isRequired,
   onTime: PropTypes.func.isRequired,
+  deposit: PropTypes.string.isRequired,
+  onDeposit: PropTypes.func.isRequired,
+  contribution: PropTypes.string.isRequired,
+  onContribution: PropTypes.func.isRequired,
   questionnaireActive: PropTypes.bool.isRequired,
   onQuestionnaireActive: PropTypes.func.isRequired,
+  error: PropTypes.bool.isRequired,
+  onError: PropTypes.func.isRequired,
   counter: PropTypes.number.isRequired,
   onCounter: PropTypes.func.isRequired,
+  capital: PropTypes.bool.isRequired,
+  onCapital: PropTypes.func.isRequired,
 };
 
 
-export default MortgageCalculator;
+export default calculatorMortgageHoc(MortgageCalculator);

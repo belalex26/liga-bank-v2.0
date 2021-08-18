@@ -7,6 +7,10 @@ import calculatorQuestionnaireHoc from '../../hoc/calculator-questionnaireр-hoc
 
 const CalculatorQuestionnaire = ({...props}) => {
 
+  const ONE_YEAR = `1`;
+  const FIVE_YEARS = `5`;
+  const ERROR_TEXT = `Это поле не может быть пустым`;
+
   const renderTarget = () => {
     if (props.target === `Ипотечное кредитование`) {
       return (`Ипотека`);
@@ -22,11 +26,11 @@ const CalculatorQuestionnaire = ({...props}) => {
   };
 
   const renderTime = () => {
-    if (props.time === `1`) {
+    if (props.time === ONE_YEAR) {
       return (
         props.time + ` год`
       );
-    } else if (props.time >= `5`) {
+    } else if (props.time >= FIVE_YEARS) {
       return (
         props.time + ` лет`
       );
@@ -34,6 +38,27 @@ const CalculatorQuestionnaire = ({...props}) => {
     return (
       props.time + ` года`
     );
+  };
+
+  const onFullNameValid = () => {
+    if (props.fullName.length > 2) {
+      return (props.onFullNameError(false));
+    }
+    return (props.onFullNameError(true));
+  };
+
+  const onEmailValid = () => {
+    if (props.email.length > 2) {
+      return (props.onEmailError(false));
+    }
+    return (props.onEmailError(true));
+  };
+
+  const onPhoneValid = () => {
+    if (props.phone.search(/\d/) !== -1) {
+      return (props.onPhoneError(false));
+    }
+    return (props.onPhoneError(true));
   };
 
   const onAddItemClick = () => {
@@ -62,6 +87,7 @@ const CalculatorQuestionnaire = ({...props}) => {
       onAddItemClick();
     }
   };
+
   return (
     <>
       <fieldset className={props.questionnaireActive ? `calculator-questionnaire calculator-questionnaire--active` : `calculator-questionnaire`}>
@@ -95,23 +121,31 @@ const CalculatorQuestionnaire = ({...props}) => {
         </ul>
 
         <div className="calculator-questionnaire__wrap">
-          <label className="calculator-questionnaire__label" htmlFor="fullName"></label>
-          <input className="calculator-questionnaire__input calculator-questionnaire__input--name" type="text" id="fullName" name="fullName" required placeholder="ФИО" value={props.fullName} onChange={((evt) => props.onFullName(evt.target.value))} pattern="([А-Яа-яЁё])"/>
+          <div className="calculator-questionnaire__container">
+            <label className="calculator-questionnaire__label">
+              <span className={props.fullNameError ? `calculator-questionnaire__message calculator-questionnaire__error` : `calculator-questionnaire__message`}>{ERROR_TEXT}</span>
+              <input className="calculator-questionnaire__input calculator-questionnaire__input--name" type="text" name="fullName" placeholder="ФИО" onBlur={onFullNameValid} value={props.fullName} onChange={((evt) => props.onFullName(evt.target.value))} />
+            </label>
+          </div>
+          <div className="calculator-questionnaire__container">
+            <label className="calculator-questionnaire__label">
+              <span className={props.phoneError ? `calculator-questionnaire__message calculator-questionnaire__error` : `calculator-questionnaire__message`}>{ERROR_TEXT}</span>
+              <InputMask
+                mask="+9(999)999-99-99"
+                value={props.phone}
+                onChange={((evt) => props.onPhone(evt.target.value))}
+                placeholder="Телефон"
+                className="calculator-questionnaire__input calculator-questionnaire__input--phone"
+                type="tel"
+                onBlur={onPhoneValid}
+              />
+            </label>
+            <label className="calculator-questionnaire__label">
+              <span className={props.emailError ? `calculator-questionnaire__message calculator-questionnaire__error` : `calculator-questionnaire__message`}>{ERROR_TEXT}</span>
+              <input className="calculator-questionnaire__input calculator-questionnaire__input--email" type="email" name="email" placeholder="E-mail" onBlur={onEmailValid} value={props.email} onChange={((evt) => props.onEmail(evt.target.value))} />
+            </label>
+          </div>
 
-          <label className="calculator-questionnaire__label" htmlFor="phone"></label>
-          <InputMask
-            mask="+9(999)999-99-99"
-            value={props.phone}
-            onChange={((evt) => props.onPhone(evt.target.value))}
-            placeholder="Телефон"
-            className="calculator-questionnaire__input calculator-questionnaire__input--phone"
-            id="phone"
-            type="tel"
-            required
-          />
-
-          <label className="calculator-questionnaire__label" htmlFor="email"></label>
-          <input className="calculator-questionnaire__input calculator-questionnaire__input--email" type="email" id="email" name="email" required placeholder="E-mail" value={props.email} onChange={((evt) => props.onEmail(evt.target.value))} pattern="(/[A-Z0-9._%+-]+@[A-Z0-9-]+.+.[A-Z]{2,4}/igm)" />
         </div>
 
         <button className="calculator-questionnaire__btn" type="submit" onClick={onButtonSuccessClick}>Отправить</button>
@@ -126,7 +160,7 @@ CalculatorQuestionnaire.propTypes = {
   target: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   deposit: PropTypes.number.isRequired,
-  time: PropTypes.string.isRequired,
+  time: PropTypes.number.isRequired,
   fullName: PropTypes.string.isRequired,
   onFullName: PropTypes.func.isRequired,
   email: PropTypes.string.isRequired,
@@ -135,11 +169,17 @@ CalculatorQuestionnaire.propTypes = {
   onPhone: PropTypes.func.isRequired,
   counter: PropTypes.number.isRequired,
   onCounter: PropTypes.func.isRequired,
-  applicationItems: PropTypes.object.isRequired,
+  applicationItems: PropTypes.array.isRequired,
   onApplicationItems: PropTypes.func.isRequired,
   questionnaireActive: PropTypes.bool.isRequired,
   successActive: PropTypes.bool.isRequired,
   onSuccessActive: PropTypes.func.isRequired,
+  fullNameError: PropTypes.bool.isRequired,
+  emailError: PropTypes.bool.isRequired,
+  phoneError: PropTypes.bool.isRequired,
+  onFullNameError: PropTypes.func.isRequired,
+  onEmailError: PropTypes.func.isRequired,
+  onPhoneError: PropTypes.func.isRequired,
 };
 
 export default calculatorQuestionnaireHoc(CalculatorQuestionnaire);

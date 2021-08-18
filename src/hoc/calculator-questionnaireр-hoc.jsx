@@ -12,7 +12,9 @@ const CalculatorQuestionnaireHoc = (Component) => {
     const [fullName, setFullName] = useState(``);
     const [phone, setPhone] = useState(``);
     const [email, setEmail] = useState(``);
-
+    const [fullNameError, setFullNameError] = useState(false);
+    const [emailError, setEmailError] = useState(false);
+    const [phoneError, setPhoneError] = useState(false);
 
     useEffect(() => {
       setApplicationItems(applications);
@@ -42,18 +44,23 @@ const CalculatorQuestionnaireHoc = (Component) => {
         fullName={fullName} onFullName={setFullName}
         phone={phone} onPhone={setPhone}
         email={email} onEmail={setEmail}
+
+        fullNameError={fullNameError} onFullNameError={setFullNameError}
+        emailError={emailError} onEmailError={setEmailError}
+        phoneError={phoneError} onPhoneError={setPhoneError}
+
       />
     );
   };
   CalculatorQuestionnaireState.propTypes = {
-    time: PropTypes.string.isRequired,
+    time: PropTypes.number.isRequired,
     target: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
     deposit: PropTypes.number.isRequired,
     counter: PropTypes.number.isRequired,
     onCounter: PropTypes.func.isRequired,
     questionnaireActive: PropTypes.bool.isRequired,
-    onQuestionnaireActive: PropTypes.string.isRequired,
+    onQuestionnaireActive: PropTypes.func.isRequired,
   };
 
   return CalculatorQuestionnaireState;

@@ -7,7 +7,7 @@ import calculatorHoc from '../../hoc/calculator-hoc';
 
 const Calculator = ({...props}) => {
 
-  const options = [`Автомобильное кредитование`];
+  const options = [`Ипотечное кредитование`, `Автомобильное кредитование`];
 
   const onSubmitForm = (evt) => {
     evt.preventDefault();
@@ -19,25 +19,15 @@ const Calculator = ({...props}) => {
       return (
         <MortgageCalculator
           target={props.target}
-          price={props.price}
-          onPrice={props.onPrice}
-          deposit={props.deposit}
-          onDeposit={props.onDeposit}
-          contribution={props.contribution}
-          onContribution={props.onContribution}
-          questionnaireActive={props.questionnaireActive}
-          onQuestionnaireActive={props.onQuestionnaireActive}
-          time={props.time}
-          onTime={props.onTime}
-          capital={props.capital}
-          onCapital={props.onCapital}
-          counter={props.counter}
-          onCounter={props.onCounter}
+          questionnaireActive={props.questionnaireActive} onQuestionnaireActive={props.onQuestionnaireActive}
         />
       );
     } else if (props.target === `Автомобильное кредитование`) {
       return (
-        <AutoCalculator/>
+        <AutoCalculator
+          target={props.target}
+          questionnaireActive={props.questionnaireActive} onQuestionnaireActive={props.onQuestionnaireActive}
+        />
       );
     }
     return (``);
@@ -80,28 +70,10 @@ const Calculator = ({...props}) => {
 Calculator.propTypes = {
   target: PropTypes.string.isRequired,
   onTarget: PropTypes.func.isRequired,
-  price: PropTypes.string.isRequired,
-  onPrice: PropTypes.func.isRequired,
-  deposit: PropTypes.string.isRequired,
-  onDeposit: PropTypes.func.isRequired,
-  contribution: PropTypes.number.isRequired,
-  onContribution: PropTypes.func.isRequired,
-  time: PropTypes.string.isRequired,
-  onTime: PropTypes.func.isRequired,
-  questionnaireActive: PropTypes.bool.isRequired,
-  onQuestionnaireActive: PropTypes.func.isRequired,
-  counter: PropTypes.number.isRequired,
-  onCounter: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  onErrors: PropTypes.func.isRequired,
   selectActive: PropTypes.bool.isRequired,
   onSelectActive: PropTypes.func.isRequired,
-  capital: PropTypes.bool.isRequired,
-  onCapital: PropTypes.func.isRequired,
-  lifeInsurance: PropTypes.bool.isRequired,
-  onLifeInsurance: PropTypes.func.isRequired,
-  carInsurance: PropTypes.bool.isRequired,
-  onCarInsurance: PropTypes.func.isRequired,
+  questionnaireActive: PropTypes.bool.isRequired,
+  onQuestionnaireActive: PropTypes.func.isRequired,
 };
 
 export default calculatorHoc(Calculator);

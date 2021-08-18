@@ -1,20 +1,19 @@
 import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
-const CalculatorAutoHoc = (Component) => {
+const CalculatorMortgageHoc = (Component) => {
 
-  const CalculatorAutoState = ({...props}) => {
+  const CalculatorMortgageState = ({...props}) => {
 
     const [price, setPrice] = useState(``);
     const [deposit, setDeposit] = useState(``);
-    const [contribution, setContribution] = useState(`20`);
+    const [contribution, setContribution] = useState(`10`);
     const [time, setTime] = useState(``);
     const [counter, setCounter] = useState(1);
     const [error, setError] = useState(false);
 
     // чек-боксы
-    const [lifeInsurance, setLifeInsurance] = useState(true);
-    const [carInsurance, setCarInsurance] = useState(true);
+    const [capital, setCapital] = useState(false);
 
 
     return (
@@ -26,8 +25,7 @@ const CalculatorAutoHoc = (Component) => {
         deposit={deposit} onDeposit={setDeposit}
         contribution={contribution} onContribution={setContribution}
         time={time} onTime={setTime}
-        lifeInsurance={lifeInsurance} onLifeInsurance={setLifeInsurance}
-        carInsurance={carInsurance} onCarInsurance={setCarInsurance}
+        capital={capital} onCapital={setCapital}
         counter={counter} onCounter={setCounter}
         error={error} onError={setError}
       />
@@ -35,12 +33,12 @@ const CalculatorAutoHoc = (Component) => {
 
   };
 
-  CalculatorAutoState.propTypes = {
+  CalculatorMortgageState.propTypes = {
     target: PropTypes.string.isRequired,
     questionnaireActive: PropTypes.bool.isRequired,
     onQuestionnaireActive: PropTypes.func.isRequired,
   };
-  return CalculatorAutoState;
+  return CalculatorMortgageState;
 };
 
-export default CalculatorAutoHoc;
+export default CalculatorMortgageHoc;

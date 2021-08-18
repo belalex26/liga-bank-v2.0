@@ -1,12 +1,15 @@
 .rejection {
-    position: absolute;
     background: #F6F7FF;
     border-radius: 4px;
-    width: 500px;
+    width: 100%;
     align-self: start;
     padding-bottom: 37px;
-    top: 25px;
-    right: 17px;
+    margin-top: 24px;
+
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 3;
 
     @media screen and (max-width: 1023px) {
         position: relative;

@@ -46,9 +46,9 @@ const Proposal = ({...props}) => {
     }
   } else {
 
-    if (props.lifeInsurance === true && props.carInsurance === true) {
+    if (props.lifeInsurance && props.carInsurance) {
       percent = 3.5;
-    } else if (props.lifeInsurance === true || props.carInsurance === true) {
+    } else if (props.lifeInsurance || props.carInsurance) {
       percent = 8.5;
     } else if (props.credit >= 2000000) {
       percent = 15;
@@ -123,11 +123,11 @@ Proposal.propTypes = {
   credit: PropTypes.number.isRequired,
   deposit: PropTypes.number.isRequired,
   price: PropTypes.number.isRequired,
-  time: PropTypes.string.isRequired,
-  contribution: PropTypes.number.isRequired,
-  lifeInsurance: PropTypes.bool.isRequired,
-  carInsurance: PropTypes.bool.isRequired,
-  capital: PropTypes.bool.isRequired,
+  time: PropTypes.number.isRequired,
+  contribution: PropTypes.string.isRequired,
+  lifeInsurance: PropTypes.bool,
+  carInsurance: PropTypes.bool,
+  capital: PropTypes.bool,
   questionnaireActive: PropTypes.bool.isRequired,
   onQuestionnaireActive: PropTypes.func.isRequired,
   counter: PropTypes.number.isRequired,
