@@ -11,12 +11,13 @@ const TabsHoc = (Component) => {
     );
 
   };
-  return TabsState;
-};
 
-TabsHoc.prototype = {
-  activeTabs: PropTypes.bool.isRequired,
-  onActiveTabs: PropTypes.func.isRequired,
+  TabsState.propTypes = {
+    activeTabs: PropTypes.bool.isRequired,
+    onActiveTabs: PropTypes.func.isRequired,
+  };
+
+  return TabsState;
 };
 
 export default TabsHoc;
