@@ -122,10 +122,13 @@
     cursor: pointer;
 
     &:hover,
-    &:focus,
-    &:active {
+    &:focus {
         outline: none;
         background: linear-gradient(90deg, #AE009D 0%, #2C36F2 95.72%);
+    }
+
+    &:active {
+        outline: none;
     }
 
     &:disabled {

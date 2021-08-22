@@ -8,7 +8,7 @@ const CalculatorAutoHoc = (Component) => {
     const [price, setPrice] = useState(``);
     const [deposit, setDeposit] = useState(``);
     const [contribution, setContribution] = useState(`20`);
-    const [time, setTime] = useState(``);
+    const [time, setTime] = useState(`1`);
     const [counter, setCounter] = useState(1);
     const [error, setError] = useState(false);
 

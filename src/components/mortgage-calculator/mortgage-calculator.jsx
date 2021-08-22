@@ -9,6 +9,10 @@ const MortgageCalculator = ({...props}) => {
 
   const MIN_TIME = 5;
   const MAX_TIME = 30;
+  const YEARS_OLD = 21;
+  const YEARS_OLD_TIME_FORM = 21;
+  const YEARS_OLD_TIME = 25;
+  const NULL = 0;
   const STEP_PRICE = 100000;
   const PRICE_VALID_MIN = 1200000;
   const PRICE_VALID_MAX = 25000000;
@@ -30,20 +34,30 @@ const MortgageCalculator = ({...props}) => {
     return (props.onDeposit(String((price * props.contribution) / PERCENT)));
   }, [price, props.contribution]);
 
-  const onClickButtonPlus = () => {
-    price = price + STEP_PRICE;
-    props.onPrice(price);
-  };
-
   const onClickButtonMinus = () => {
+
+    if (!price) {
+      return (props.onPrice(PRICE_VALID_MIN));
+    }
     price = price - STEP_PRICE;
-    props.onPrice(price);
+    return (props.onPrice(price));
   };
 
-  const onValidPrice = () => {
+  const onClickButtonPlus = () => {
+    if (!price) {
+      return (props.onPrice(PRICE_VALID_MIN));
+    }
+    price = price + STEP_PRICE;
+    return (props.onPrice(price));
+  };
+
+  const onPriceValid = () => {
+
     if (price < PRICE_VALID_MIN) {
       if (!price) {
         return (``);
+      } else if (price <= NULL) {
+        props.onPrice(NULL);
       }
       props.onError(true);
       return (<span className="calculator__form-error">Некорректное значение</span>);
@@ -89,6 +103,30 @@ const MortgageCalculator = ({...props}) => {
     return (`${props.time}`);
   };
 
+  const renderTime = () => {
+
+    if (props.time < YEARS_OLD || props.time >= YEARS_OLD_TIME) {
+      return (
+        <span className="calculator__form-time-message">лет</span>
+      );
+    } else if (props.time > YEARS_OLD_TIME_FORM) {
+      return (
+        <span className="calculator__form-time-message">года</span>
+      );
+    }
+
+    return (
+      <span className="calculator__form-time-message">год</span>
+    );
+  };
+
+  const onTimeRender = () => {
+    if (!props.time) {
+      return (``);
+    }
+    return (renderTime());
+  };
+
   const renderProposal = () => {
 
     if (props.price && props.time) {
@@ -125,8 +163,8 @@ const MortgageCalculator = ({...props}) => {
         <div className="calculator__form-price">
           <button className="calculator__form-btn calculator__form-btn--minus" type="button" onClick={onClickButtonMinus}></button>
           <label className="calculator__form-label calculator__form-label--price">Стоимость недвижимости
-            {onValidPrice()}
-            <input className="calculator__form-input" type="text" name="price" value={`${props.price}`} onChange={((evt) => props.onPrice(evt.target.value))} placeholder="1 200 000 рублей" />
+            {onPriceValid()}
+            <input className="calculator__form-input" type="number" name="price" value={`${props.price}`} onChange={((evt) => props.onPrice(evt.target.value))} placeholder="1 200 000 рублей" />
           </label>
           <button className="calculator__form-btn calculator__form-btn--plus" type="button" onClick={onClickButtonPlus}></button>
           <p className="calculator__form-text">От 1 200 000  до 25 000 000 рублей</p>
@@ -138,11 +176,12 @@ const MortgageCalculator = ({...props}) => {
 
         <label className="calculator__form-label calculator__form-label--contribution">
           <input className="calculator__form-range" type="range" name="contribution" min="10" step='5' value={props.contribution} onChange={((evt) => props.onContribution(evt.target.value))} />
-          <span className="calculator__form-text">10%</span>
+          <span className="calculator__form-text calculator__form-text--contribution">10%</span>
         </label>
 
         <label className="calculator__form-label calculator__form-label--time">Срок кредитования
-          <input className="calculator__form-input" type="number" value={`${onTimeValid()}`} onChange={((evt) => props.onTime(evt.target.value))} placeholder="5 лет"/>
+          {onTimeRender()}
+          <input className="calculator__form-input" type="text" value={`${onTimeValid()}`} onChange={((evt) => props.onTime(evt.target.value))} placeholder="5 лет"/>
         </label>
 
         <label className="calculator__form-label calculator__form-label--time-range">

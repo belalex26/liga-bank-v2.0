@@ -61,6 +61,12 @@ const CalculatorQuestionnaire = ({...props}) => {
     return (props.onPhoneError(true));
   };
 
+  const onApplicationValid = () => {
+    onFullNameValid();
+    onPhoneValid();
+    onEmailValid();
+  };
+
   const onAddItemClick = () => {
 
     let newApplication = {
@@ -85,7 +91,7 @@ const CalculatorQuestionnaire = ({...props}) => {
       props.onSuccessActive(true);
       props.onCounter(props.counter + 1);
       onAddItemClick();
-    }
+    } return (onApplicationValid());
   };
 
   return (
