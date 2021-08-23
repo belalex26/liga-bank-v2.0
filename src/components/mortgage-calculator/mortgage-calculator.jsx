@@ -11,7 +11,6 @@ const MortgageCalculator = ({...props}) => {
   const MIN_TIME = 5;
   const MAX_TIME = 30;
   const YEARS_OLD = 21;
-  const YEARS_OLD_TIME_FORM = 21;
   const YEARS_OLD_TIME = 25;
   const NULL = 0;
   const STEP_PRICE = 100000;
@@ -108,7 +107,7 @@ const MortgageCalculator = ({...props}) => {
 
     if (props.time < YEARS_OLD || props.time >= YEARS_OLD_TIME) {
       return (` лет`);
-    } else if (props.time > YEARS_OLD_TIME_FORM) {
+    } else if (props.time > YEARS_OLD) {
       return (` года`);
     }
     return (` год`);

@@ -317,5 +317,6 @@ input[type='range']::-webkit-slider-thumb  {
 .calculator__form-checkbox:hover + .calculator__form-checkbox-text,
 .calculator__form-checkbox:focus + .calculator__form-checkbox-text,
 .calculator__form-checkbox:active + .calculator__form-checkbox-text {
-    border: 1px solid rgba(72, 73, 77, 0.7);
+    outline: none;
+    opacity: 0.5;
 }

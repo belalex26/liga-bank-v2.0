@@ -20,6 +20,7 @@ const Calculator = ({...props}) => {
         <MortgageCalculator
           target={props.target}
           questionnaireActive={props.questionnaireActive} onQuestionnaireActive={props.onQuestionnaireActive}
+          counter={props.counter} onCounter={props.onCounter}
         />
       );
     } else if (props.target === `Автомобильное кредитование`) {
@@ -27,6 +28,7 @@ const Calculator = ({...props}) => {
         <AutoCalculator
           target={props.target}
           questionnaireActive={props.questionnaireActive} onQuestionnaireActive={props.onQuestionnaireActive}
+          counter={props.counter} onCounter={props.onCounter}
         />
       );
     }
@@ -74,6 +76,8 @@ Calculator.propTypes = {
   onSelectActive: PropTypes.func.isRequired,
   questionnaireActive: PropTypes.bool.isRequired,
   onQuestionnaireActive: PropTypes.func.isRequired,
+  counter: PropTypes.number.isRequired,
+  onCounter: PropTypes.func.isRequired,
 };
 
 export default calculatorHoc(Calculator);

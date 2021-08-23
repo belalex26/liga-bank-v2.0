@@ -9,7 +9,6 @@ const CalculatorAutoHoc = (Component) => {
     const [deposit, setDeposit] = useState(``);
     const [contribution, setContribution] = useState(`20`);
     const [time, setTime] = useState(`1`);
-    const [counter, setCounter] = useState(1);
     const [error, setError] = useState(false);
 
     // чек-боксы
@@ -28,7 +27,7 @@ const CalculatorAutoHoc = (Component) => {
         time={time} onTime={setTime}
         lifeInsurance={lifeInsurance} onLifeInsurance={setLifeInsurance}
         carInsurance={carInsurance} onCarInsurance={setCarInsurance}
-        counter={counter} onCounter={setCounter}
+        counter={props.counter} onCounter={props.onCounter}
         error={error} onError={setError}
       />
     );
@@ -39,6 +38,8 @@ const CalculatorAutoHoc = (Component) => {
     target: PropTypes.string.isRequired,
     questionnaireActive: PropTypes.bool.isRequired,
     onQuestionnaireActive: PropTypes.func.isRequired,
+    counter: PropTypes.number.isRequired,
+    onCounter: PropTypes.func.isRequired,
   };
   return CalculatorAutoState;
 };

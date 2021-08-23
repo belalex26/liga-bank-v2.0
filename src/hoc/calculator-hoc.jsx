@@ -6,6 +6,7 @@ const CalculatorHoc = (Component) => {
 
     const [target, setTarget] = useState(`Выберите цель кредита`);
     const [selectActive, setSelectActive] = useState(false);
+    const [counter, setCounter] = useState(1);
 
     const [questionnaireActive, setQuestionnaireActive] = useState(false);
     return (
@@ -13,6 +14,7 @@ const CalculatorHoc = (Component) => {
         selectActive={selectActive} onSelectActive={setSelectActive}
         questionnaireActive={questionnaireActive} onQuestionnaireActive={setQuestionnaireActive}
         target={target} onTarget={setTarget}
+        counter={counter} onCounter={setCounter}
       />
     );
 
