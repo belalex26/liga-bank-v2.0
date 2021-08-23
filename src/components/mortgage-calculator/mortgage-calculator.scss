@@ -73,7 +73,7 @@
     }
 
     @media screen and (max-width: 1023px) {
-        width: 676px;
+        width: 100%;
     }
 
     @media screen and (max-width: 767px) {
@@ -137,7 +137,7 @@
     }
 
     @media screen and (max-width: 1023px) {
-        right: 43px;
+        right: 1.2%;
     }
 
     @media screen and (max-width: 767px) {
@@ -165,11 +165,9 @@
     @media screen and (max-width: 1023px) {
         margin-top: 0;
         padding: 18px 0;
-        width: 674px;
     }
 
     @media screen and (max-width: 767px) {
-        width: 100%;
         padding: 16px 0;
     }
 }
@@ -204,15 +202,6 @@ input[type='range']::-webkit-slider-thumb  {
     width: 100%;
     display: flex;
     justify-content: space-between;
-
-
-    @media screen and (max-width: 1023px) {
-        width: 87%;
-    }
-
-    @media screen and (max-width: 767px) {
-        width: 100%;
-    }
 }
 
 .calculator__form-label--time {

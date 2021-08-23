@@ -23,6 +23,7 @@ const MortgageCalculator = ({...props}) => {
   let price = Number(props.price);
   let time = Number(props.time);
   let depositValue = Number(props.deposit);
+  let contributionValue = Number(props.contribution);
   let minDeposit = (price * MIN_CONTRIBUTION) / PERCENT;
   let credit = price - depositValue;
 
@@ -31,24 +32,24 @@ const MortgageCalculator = ({...props}) => {
     if (!price) {
       return (props.onDeposit(`120 000 рублей`));
     }
-    return (props.onDeposit(String((price * props.contribution) / PERCENT)));
-  }, [price, props.contribution]);
+    return (props.onDeposit(String((price * contributionValue) / PERCENT)));
+  }, [price, contributionValue]);
 
   const onClickButtonMinus = () => {
 
     if (!price) {
-      return (props.onPrice(PRICE_VALID_MIN));
+      return (props.onPrice(String(PRICE_VALID_MIN)));
     }
     price = price - STEP_PRICE;
-    return (props.onPrice(price));
+    return (props.onPrice(String(price)));
   };
 
   const onClickButtonPlus = () => {
     if (!price) {
-      return (props.onPrice(PRICE_VALID_MIN));
+      return (props.onPrice(String(PRICE_VALID_MIN)));
     }
     price = price + STEP_PRICE;
-    return (props.onPrice(price));
+    return (props.onPrice(String(price)));
   };
 
   const onPriceValid = () => {
@@ -83,22 +84,16 @@ const MortgageCalculator = ({...props}) => {
   const onContributionRender = () => {
 
     if (depositValue < minDeposit) {
-      return (props.onContribution(MIN_CONTRIBUTION));
+      return (props.onContribution(String(MIN_CONTRIBUTION)));
     }
-    return (props.onContribution(Math.ceil((props.deposit / price) * PERCENT)));
+    return (props.onContribution(String(Math.ceil((props.deposit / price) * PERCENT))));
   };
 
   const onTimeValid = () => {
     if (time < MIN_TIME) {
-      if (!props.time) {
-        return (`${props.time}`);
-      }
-      return (props.onTime(`${MIN_TIME}`));
+      props.onTime(String(MIN_TIME));
     } else if (time > MAX_TIME) {
-      if (!props.time) {
-        return (`${props.time}`);
-      }
-      return (props.onTime(`${MAX_TIME}`));
+      return (props.onTime(String(MAX_TIME)));
     }
     return (`${props.time}`);
   };
@@ -198,7 +193,8 @@ const MortgageCalculator = ({...props}) => {
         <label className="calculator__form-label calculator__form-label--time">Срок кредитования
           <NumberFormat
             className="calculator__form-input"
-            value={onTimeValid()}
+            value={props.time}
+            onBlur={onTimeValid}
             displayType="number"
             suffix={onTimeRender()}
             placeholder="5 лет"
@@ -210,7 +206,7 @@ const MortgageCalculator = ({...props}) => {
         </label>
 
         <label className="calculator__form-label calculator__form-label--time-range">
-          <input className="calculator__form-range" type="range" name="time" min="5" max="30" step="1" value={`${onTimeValid()}`} onChange={((evt) => props.onTime(evt.target.value))} />
+          <input className="calculator__form-range" type="range" name="time" min="5" max="30" step="1" value={props.time} onChange={((evt) => props.onTime(evt.target.value))} />
         </label>
 
         <div className="calculator__form-desc">

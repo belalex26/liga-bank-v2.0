@@ -13,8 +13,8 @@ const TabsHoc = (Component) => {
   };
 
   TabsState.propTypes = {
-    activeTabs: PropTypes.bool.isRequired,
-    onActiveTabs: PropTypes.func.isRequired,
+    activeTabs: PropTypes.bool,
+    onActiveTabs: PropTypes.func,
   };
 
   return TabsState;

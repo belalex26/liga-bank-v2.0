@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React from 'react';
 import InputMask from 'react-input-mask';
 import PropTypes from 'prop-types';
@@ -58,8 +57,6 @@ const CalculatorQuestionnaire = ({...props}) => {
     return (props.onEmailError(false));
   };
 
-  console.log(props.emailError);
-
   const onRenderEmailText = () => {
     if (!props.email) {
       errorTextEmail = errorText;
@@ -71,19 +68,6 @@ const CalculatorQuestionnaire = ({...props}) => {
       props.onEmailError(true);
     }
   };
-  /*
-  const onEmailErrorText = () => {
-    if (!props.email) {
-      props.onEmailError(true);
-      errorTextEmail = `Это поле не может быть пустым`;
-      return (errorTextEmail);
-    } else if (props.emailValid) {
-      props.onEmailError(true);
-    }
-    props.onEmailError(false);
-    return (``);
-  };*/
-
 
   const onPhoneValid = () => {
     if (props.phone.search(/\d/) !== -1) {
@@ -118,11 +102,14 @@ const CalculatorQuestionnaire = ({...props}) => {
   };
 
   const onButtonSuccessClick = () => {
+    onApplicationValid();
     if (!props.emailError && !props.phoneError && !props.fullNameError) {
-      props.onSuccessActive(true);
-      props.onCounter(props.counter + 1);
-      onAddItemClick();
-    } return (onApplicationValid());
+      if (props.email && props.phone && props.fullName) {
+        props.onSuccessActive(true);
+        props.onCounter(props.counter + 1);
+        onAddItemClick();
+      }
+    }
   };
 
   return (

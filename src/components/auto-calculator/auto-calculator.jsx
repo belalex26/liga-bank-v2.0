@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import NumberFormat from 'react-number-format';
@@ -22,6 +23,7 @@ const AutoCalculator = ({...props}) => {
   let price = Number(props.price);
   let depositValue = Number(props.deposit);
   let time = Number(props.time);
+  let contributionValue = Number(props.contribution);
   let minDeposit = (price * MIN_CONTRIBUTION) / PERCENT;
   let credit = price - depositValue;
 
@@ -30,24 +32,24 @@ const AutoCalculator = ({...props}) => {
     if (!price) {
       return (props.onDeposit(`240 000 рублей`));
     }
-    return (props.onDeposit(String((price * props.contribution) / PERCENT)));
-  }, [price, props.contribution]);
+    return (props.onDeposit(String((price * contributionValue) / PERCENT)));
+  }, [price, contributionValue]);
 
   const onClickButtonMinus = () => {
     if (!price) {
-      return (props.onPrice(PRICE_VALID_MIN));
+      return (props.onPrice(String(PRICE_VALID_MIN)));
     }
     price = price - STEP_PRICE;
-    return (props.onPrice(price));
+    return (props.onPrice(String(price)));
   };
 
 
   const onClickButtonPlus = () => {
     if (!price) {
-      return (props.onPrice(PRICE_VALID_MIN));
+      return (props.onPrice(String(PRICE_VALID_MIN)));
     }
     price = price + STEP_PRICE;
-    return (props.onPrice(price));
+    return (props.onPrice(String(price)));
   };
 
 
@@ -75,7 +77,7 @@ const AutoCalculator = ({...props}) => {
     onContributionRender();
 
     if (depositValue < minDeposit) {
-      return (props.onDeposit(minDeposit));
+      return (props.onDeposit(String(minDeposit)));
     }
     return (props.deposit);
   };
@@ -83,26 +85,22 @@ const AutoCalculator = ({...props}) => {
   const onContributionRender = () => {
 
     if (depositValue < minDeposit) {
-      return (props.onContribution(MIN_CONTRIBUTION));
+      return (props.onContribution(String(MIN_CONTRIBUTION)));
     }
-    return (props.onContribution(Math.ceil((props.deposit / price) * PERCENT)));
+    return (props.onContribution(String(Math.ceil((props.deposit / price) * PERCENT))));
   };
 
   const onTimeValid = () => {
-    if (time < MIN_TIME) {
-      if (!props.time) {
-        return (`${props.time}`);
+    if (!time) {
+      props.onTime(String(time));
+      if (time < MIN_TIME) {
+        props.onTime(String(MIN_TIME));
       }
-      return (props.onTime(`${MIN_TIME}`));
     } else if (time > MAX_TIME) {
-      if (!props.time) {
-        return (`${props.time}`);
-      }
-      return (props.onTime(`${MAX_TIME}`));
+      return (props.onTime(String(MAX_TIME)));
     }
     return (`${props.time}`);
   };
-
   const renderTime = () => {
 
     if (props.time >= MAX_TIME) {
@@ -199,9 +197,10 @@ const AutoCalculator = ({...props}) => {
         <label className="calculator__form-label calculator__form-label--time">Срок кредитования
           <NumberFormat
             className="calculator__form-input"
-            value={onTimeValid()}
+            value={props.time}
             displayType="number"
             suffix={onTimeRender()}
+            onBlur={onTimeValid}
             placeholder="1 год"
             onValueChange={(values) => {
               const {value} = values;
@@ -211,7 +210,7 @@ const AutoCalculator = ({...props}) => {
         </label>
 
         <label className="calculator__form-label calculator__form-label--time-range">
-          <input className="calculator__form-range" type="range" name="period" min='1' max="5" step='1' value={`${onTimeValid()}`} onChange={((evt) => props.onTime(evt.target.value))} />
+          <input className="calculator__form-range" type="range" name="period" min='1' max="5" step='1' value={props.time} onChange={((evt) => props.onTime(evt.target.value))} />
         </label>
 
         <div className="calculator__form-desc">
