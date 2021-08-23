@@ -100,7 +100,7 @@ const Proposal = ({...props}) => {
             <p className="proposal__content-desc">Необходимый доход</p>
           </li>
         </ul>
-        <button className="proposal__btn" type="button" onClick={onButtonClick}>Оформить заявку</button>
+        <a className="proposal__btn" href="#questionnaire" onClick={onButtonClick}>Оформить заявку</a>
       </div>
       <CalculatorQuestionnaire
         questionnaireActive={props.questionnaireActive}

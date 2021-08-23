@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
+import NumberFormat from 'react-number-format';
 
 import calculatorMortgageHoc from '../../hoc/calculator-mortgage-hoc';
 import Rejection from '../rejection/rejection';
@@ -106,18 +107,11 @@ const MortgageCalculator = ({...props}) => {
   const renderTime = () => {
 
     if (props.time < YEARS_OLD || props.time >= YEARS_OLD_TIME) {
-      return (
-        <span className="calculator__form-time-message">лет</span>
-      );
+      return (` лет`);
     } else if (props.time > YEARS_OLD_TIME_FORM) {
-      return (
-        <span className="calculator__form-time-message">года</span>
-      );
+      return (` года`);
     }
-
-    return (
-      <span className="calculator__form-time-message">год</span>
-    );
+    return (` год`);
   };
 
   const onTimeRender = () => {
@@ -164,14 +158,37 @@ const MortgageCalculator = ({...props}) => {
           <button className="calculator__form-btn calculator__form-btn--minus" type="button" onClick={onClickButtonMinus}></button>
           <label className="calculator__form-label calculator__form-label--price">Стоимость недвижимости
             {onPriceValid()}
-            <input className="calculator__form-input" type="number" name="price" value={`${props.price}`} onChange={((evt) => props.onPrice(evt.target.value))} placeholder="1 200 000 рублей" />
+            <NumberFormat
+              className="calculator__form-input"
+              value={props.price}
+              displayType="number"
+              thousandSeparator=" "
+              suffix=" рублей"
+              placeholder="1 200 000 рублей"
+              onValueChange={(values) => {
+                const {value} = values;
+                props.onPrice(value);
+              }}
+            />
           </label>
           <button className="calculator__form-btn calculator__form-btn--plus" type="button" onClick={onClickButtonPlus}></button>
           <p className="calculator__form-text">От 1 200 000  до 25 000 000 рублей</p>
         </div>
 
         <label className="calculator__form-label calculator__form-label--deposit">Первоначальный взнос
-          <input className="calculator__form-input" type="number" name="deposit" value={props.deposit} onChange={((evt) => props.onDeposit(evt.target.value))} onBlur={onDepositValid} placeholder="120 000 рублей"/>
+          <NumberFormat
+            className="calculator__form-input"
+            value={props.deposit}
+            displayType="number"
+            thousandSeparator=" "
+            suffix=" рублей"
+            onBlur={onDepositValid}
+            placeholder="120 000 рублей"
+            onValueChange={(values) => {
+              const {value} = values;
+              props.onDeposit(value);
+            }}
+          />
         </label>
 
         <label className="calculator__form-label calculator__form-label--contribution">
@@ -180,8 +197,17 @@ const MortgageCalculator = ({...props}) => {
         </label>
 
         <label className="calculator__form-label calculator__form-label--time">Срок кредитования
-          {onTimeRender()}
-          <input className="calculator__form-input" type="text" value={`${onTimeValid()}`} onChange={((evt) => props.onTime(evt.target.value))} placeholder="5 лет"/>
+          <NumberFormat
+            className="calculator__form-input"
+            value={onTimeValid()}
+            displayType="number"
+            suffix={onTimeRender()}
+            placeholder="5 лет"
+            onValueChange={(values) => {
+              const {value} = values;
+              props.onTime(value);
+            }}
+          />
         </label>
 
         <label className="calculator__form-label calculator__form-label--time-range">

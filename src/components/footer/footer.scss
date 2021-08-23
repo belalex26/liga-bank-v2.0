@@ -9,6 +9,10 @@
     @media screen and (max-width: 1023px) {
         padding-bottom: 53px;
     }
+
+    @media screen and (max-width: 767px) {
+        margin-top: -70px;
+    }
 }
 
 .footer__container {

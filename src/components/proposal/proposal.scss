@@ -22,6 +22,7 @@
         margin-left: 3%;
         width: 94%;
         margin-top: 43px;
+        margin-bottom: 66px;
     }
 
     @media screen and (max-width: 767px) {
@@ -29,6 +30,7 @@
         margin-top: 30px;
         padding-bottom: 39px;
         width: 91%;
+        margin-bottom: 45px;
     }
 }
 
@@ -41,6 +43,7 @@
 
     @media screen and (max-width: 1023px) {
         padding-left: 9%;
+        margin: 14px 0;
     }
 
     @media screen and (max-width: 767px) {
@@ -62,6 +65,8 @@
     flex-wrap: wrap;
 
     @media screen and (max-width: 1023px) {
+        margin-top: 17px;
+        margin-bottom: 13px;
         width: 94%;
         padding-left: 11%;
     }
@@ -80,6 +85,7 @@
     margin-bottom: 13px;
 
     @media screen and (max-width: 1023px) {
+        margin-bottom: 10px;
         width: 33%;
         margin-right: 3%;
     }
@@ -114,6 +120,7 @@
 .proposal__btn {
     color: #F6F7FF;
     background: #2C36F2;
+    text-decoration: none;
     font-size: 16px;
     font-weight: 500;
     padding: 16px 123px;
@@ -124,7 +131,7 @@
     &:hover,
     &:focus {
         outline: none;
-        background: linear-gradient(90deg, #AE009D 0%, #2C36F2 95.72%);
+        opacity: 0.5;
     }
 
     &:active {

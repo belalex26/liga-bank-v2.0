@@ -14,6 +14,7 @@ const CalculatorQuestionnaireHoc = (Component) => {
     const [email, setEmail] = useState(``);
     const [fullNameError, setFullNameError] = useState(false);
     const [emailError, setEmailError] = useState(false);
+    const [emailValid, setEmailValid] = useState(false);
     const [phoneError, setPhoneError] = useState(false);
 
     useEffect(() => {
@@ -47,6 +48,7 @@ const CalculatorQuestionnaireHoc = (Component) => {
 
         fullNameError={fullNameError} onFullNameError={setFullNameError}
         emailError={emailError} onEmailError={setEmailError}
+        emailValid={emailValid} onEmailValid={setEmailValid}
         phoneError={phoneError} onPhoneError={setPhoneError}
 
       />

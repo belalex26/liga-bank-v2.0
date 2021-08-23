@@ -5,7 +5,7 @@ const CalculatorAutoHoc = (Component) => {
 
   const CalculatorAutoState = ({...props}) => {
 
-    const [price, setPrice] = useState(``);
+    const [price, setPrice] = useState(`500000`);
     const [deposit, setDeposit] = useState(``);
     const [contribution, setContribution] = useState(`20`);
     const [time, setTime] = useState(`1`);

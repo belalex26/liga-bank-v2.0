@@ -1,6 +1,6 @@
-/* eslint-disable no-console */
 import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
+import NumberFormat from 'react-number-format';
 
 import calculatorAutoHoc from '../../hoc/calculator-auto-hoc';
 import Rejection from '../rejection/rejection';
@@ -11,8 +11,6 @@ const AutoCalculator = ({...props}) => {
   const MIN_TIME = 1;
   const MAX_TIME = 5;
   const YEARS_OLD = 2;
-  // const YEARS_OLD2_TIME_FORM = 21;
-  // const YEARS_OLD_TIME = 25;
   const NULL = 0;
   const STEP_PRICE = 50000;
   const PRICE_VALID_MIN = 500000;
@@ -71,18 +69,6 @@ const AutoCalculator = ({...props}) => {
     props.onError(false);
     return (``);
   };
-  /*
-  const onErrorRender = () => {
-    if (price < PRICE_VALID_MIN) {
-      if (!price) {
-        props.onError(false);
-      }
-      props.onError(true);
-    } else if (price > PRICE_VALID_MAX) {
-      props.onError(true);
-    }
-    props.onError(false);
-  };*/
 
   const onDepositValid = () => {
 
@@ -120,18 +106,11 @@ const AutoCalculator = ({...props}) => {
   const renderTime = () => {
 
     if (props.time >= MAX_TIME) {
-      return (
-        <span className="calculator__form-time-message">лет</span>
-      );
+      return (` лет`);
     } else if (props.time >= YEARS_OLD) {
-      return (
-        <span className="calculator__form-time-message">года</span>
-      );
+      return (` года`);
     }
-
-    return (
-      <span className="calculator__form-time-message">год</span>
-    );
+    return (` год`);
   };
 
   const onTimeRender = () => {
@@ -179,14 +158,37 @@ const AutoCalculator = ({...props}) => {
           <button className="calculator__form-btn calculator__form-btn--minus" type="button" onClick={onClickButtonMinus}></button>
           <label className="calculator__form-label calculator__form-label--price">Стоимость автомобиля
             {onPriceValid()}
-            <input className="calculator__form-input" type="number" name="price" value={`${props.price}`} onChange={((evt) => props.onPrice(evt.target.value))} placeholder="1 200 000 рублей"/>
+            <NumberFormat
+              className="calculator__form-input"
+              value={props.price}
+              displayType="number"
+              thousandSeparator=" "
+              suffix=" рублей"
+              placeholder="1 200 000 рублей"
+              onValueChange={(values) => {
+                const {value} = values;
+                props.onPrice(value);
+              }}
+            />
           </label>
           <button className="calculator__form-btn calculator__form-btn--plus" type="button" onClick={onClickButtonPlus}></button>
           <p className="calculator__form-text">От 500 000  до 5 000 000 рублей</p>
         </div>
 
         <label className="calculator__form-label calculator__form-label--deposit">Первоначальный взнос
-          <input className="calculator__form-input" type="number" value={props.deposit} onChange={((evt) => props.onDeposit(evt.target.value))} onBlur={onDepositValid} placeholder="240 000 рублей"/>
+          <NumberFormat
+            className="calculator__form-input"
+            value={props.deposit}
+            displayType="number"
+            thousandSeparator=" "
+            suffix=" рублей"
+            onBlur={onDepositValid}
+            placeholder="240 000 рублей"
+            onValueChange={(values) => {
+              const {value} = values;
+              props.onDeposit(value);
+            }}
+          />
         </label>
 
         <label className="calculator__form-label calculator__form-label--contribution">
@@ -195,8 +197,17 @@ const AutoCalculator = ({...props}) => {
         </label>
 
         <label className="calculator__form-label calculator__form-label--time">Срок кредитования
-          {onTimeRender()}
-          <input className="calculator__form-input" type="text" value={`${onTimeValid()}`} onChange={((evt) => props.onTime(evt.target.value))} placeholder="1 год"/>
+          <NumberFormat
+            className="calculator__form-input"
+            value={onTimeValid()}
+            displayType="number"
+            suffix={onTimeRender()}
+            placeholder="1 год"
+            onValueChange={(values) => {
+              const {value} = values;
+              props.onTime(value);
+            }}
+          />
         </label>
 
         <label className="calculator__form-label calculator__form-label--time-range">

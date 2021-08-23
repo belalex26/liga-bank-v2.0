@@ -5,7 +5,7 @@ const CalculatorMortgageHoc = (Component) => {
 
   const CalculatorMortgageState = ({...props}) => {
 
-    const [price, setPrice] = useState(``);
+    const [price, setPrice] = useState(`1200000`);
     const [deposit, setDeposit] = useState(``);
     const [contribution, setContribution] = useState(`10`);
     const [time, setTime] = useState(`5`);

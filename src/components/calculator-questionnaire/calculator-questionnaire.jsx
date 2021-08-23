@@ -9,7 +9,7 @@ const CalculatorQuestionnaire = ({...props}) => {
 
   const ONE_YEAR = `1`;
   const FIVE_YEARS = `5`;
-  const ERROR_TEXT = `Это поле не может быть пустым`;
+  let errorText = `Это поле не может быть пустым`;
 
   const renderTarget = () => {
     if (props.target === `Ипотечное кредитование`) {
@@ -54,6 +54,16 @@ const CalculatorQuestionnaire = ({...props}) => {
     return (props.onEmailError(true));
   };
 
+  const onErrorRender = () => {
+    if (props.emailError && props.emailValid) {
+      errorText = `Введите корректный email`;
+      return (errorText);
+    } else if (props.emailError) {
+      return (<span className={props.emailError ? `calculator-questionnaire__message calculator-questionnaire__error` : `calculator-questionnaire__message`}>{errorText}</span>);
+    }
+    return (<span className={props.emailError ? `calculator-questionnaire__message calculator-questionnaire__error` : `calculator-questionnaire__message`}>{errorText}</span>);
+  };
+
   const onPhoneValid = () => {
     if (props.phone.search(/\d/) !== -1) {
       return (props.onPhoneError(false));
@@ -96,7 +106,7 @@ const CalculatorQuestionnaire = ({...props}) => {
 
   return (
     <>
-      <fieldset className={props.questionnaireActive ? `calculator-questionnaire calculator-questionnaire--active` : `calculator-questionnaire`}>
+      <fieldset className={props.questionnaireActive ? `calculator-questionnaire calculator-questionnaire--active` : `calculator-questionnaire`} id="questionnaire">
         <p className="calculator-questionnaire__title">Шаг 3. Оформление заявки</p>
 
         <ul className="calculator-questionnaire__list">
@@ -129,13 +139,13 @@ const CalculatorQuestionnaire = ({...props}) => {
         <div className="calculator-questionnaire__wrap">
           <div className="calculator-questionnaire__container">
             <label className="calculator-questionnaire__label">
-              <span className={props.fullNameError ? `calculator-questionnaire__message calculator-questionnaire__error` : `calculator-questionnaire__message`}>{ERROR_TEXT}</span>
+              <span className={props.fullNameError ? `calculator-questionnaire__message calculator-questionnaire__error` : `calculator-questionnaire__message`}>{errorText}</span>
               <input className="calculator-questionnaire__input calculator-questionnaire__input--name" type="text" name="fullName" placeholder="ФИО" onBlur={onFullNameValid} value={props.fullName} onChange={((evt) => props.onFullName(evt.target.value))} />
             </label>
           </div>
           <div className="calculator-questionnaire__container">
             <label className="calculator-questionnaire__label">
-              <span className={props.phoneError ? `calculator-questionnaire__message calculator-questionnaire__error` : `calculator-questionnaire__message`}>{ERROR_TEXT}</span>
+              <span className={props.phoneError ? `calculator-questionnaire__message calculator-questionnaire__error` : `calculator-questionnaire__message`}>{errorText}</span>
               <InputMask
                 mask="+9(999)999-99-99"
                 value={props.phone}
@@ -147,8 +157,8 @@ const CalculatorQuestionnaire = ({...props}) => {
               />
             </label>
             <label className="calculator-questionnaire__label">
-              <span className={props.emailError ? `calculator-questionnaire__message calculator-questionnaire__error` : `calculator-questionnaire__message`}>{ERROR_TEXT}</span>
-              <input className="calculator-questionnaire__input calculator-questionnaire__input--email" type="email" name="email" placeholder="E-mail" onBlur={onEmailValid} value={props.email} onChange={((evt) => props.onEmail(evt.target.value))} />
+              {onErrorRender()}
+              <input className="calculator-questionnaire__input calculator-questionnaire__input--email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" placeholder="E-mail" onBlur={onEmailValid} value={props.email} onChange={((evt) => props.onEmail(evt.target.value))} />
             </label>
           </div>
 
@@ -182,9 +192,11 @@ CalculatorQuestionnaire.propTypes = {
   onSuccessActive: PropTypes.func.isRequired,
   fullNameError: PropTypes.bool.isRequired,
   emailError: PropTypes.bool.isRequired,
+  emailValid: PropTypes.bool.isRequired,
   phoneError: PropTypes.bool.isRequired,
   onFullNameError: PropTypes.func.isRequired,
   onEmailError: PropTypes.func.isRequired,
+  onEmailValid: PropTypes.func.isRequired,
   onPhoneError: PropTypes.func.isRequired,
 };
 
